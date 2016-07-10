@@ -25,14 +25,11 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.loginButton.setTitle("Test 123", forState: UIControlState.Normal)
-        loginButton.addTarget(self, action: #selector(RootViewController.loginButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
+        self.passwordTextField.secureTextEntry = true
     }
     
     // Touch button handler for the login button
-    func loginButtonClicked(){
-        
+    @IBAction func loginButtonPressed(sender: UIButton) {
         if emailTextField.text != nil{
             print("Email field: " + emailTextField.text!)
         }
