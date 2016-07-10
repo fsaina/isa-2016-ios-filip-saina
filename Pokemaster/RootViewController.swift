@@ -26,6 +26,36 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.passwordTextField.secureTextEntry = true
+        
+        setBottomBorderTextField(emailTextField)
+        setBottomBorderTextField(passwordTextField)
+        
+        setTextFieldLeftIcoc(emailTextField, imageString: "lock.png")
+        setTextFieldLeftIcoc(passwordTextField, imageString: "mail.png")
+        
+    }
+    
+    private func setTextFieldLeftIcoc(textField: UITextField, imageString: String!){
+        
+        let imageView = UIImageView();
+        let image = UIImage(named: imageString);
+        
+        imageView.image = image;
+        imageView.frame = CGRect(x: 5, y: 5, width: 30, height: 30)
+        textField.leftView = imageView;
+        textField.leftViewMode = UITextFieldViewMode.Always
+    }
+    
+    private func setBottomBorderTextField(textField: UITextField){
+        
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.lightGrayColor().CGColor
+        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
+        
+        border.borderWidth = width
+        textField.layer.addSublayer(border)
+        textField.layer.masksToBounds = true
     }
     
     // Touch button handler for the login button
