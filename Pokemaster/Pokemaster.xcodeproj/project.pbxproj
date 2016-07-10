@@ -390,6 +390,7 @@
 				B56F71E71D2A6BE30031715C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B56F71E81D2A6BE30031715C /* Build configuration list for PBXNativeTarget "PokemasterUITests" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +399,7 @@
 				B56F71EA1D2A6BE30031715C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
