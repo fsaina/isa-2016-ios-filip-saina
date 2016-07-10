@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 /**
  * Login view controller class. Contains all the necessary logic for
@@ -58,16 +59,21 @@ class RootViewController: UIViewController {
         textField.layer.masksToBounds = true
     }
     
-    // Touch button handler for the login button
-    @IBAction func loginButtonPressed(sender: UIButton) {
-        if emailTextField.text != nil{
-            print("Email field: " + emailTextField.text!)
-        }
+    
+    
+    func hideHUDWithDelay(){
+        MBProgressHUD.hideHUDForView(view, animated:true)
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
+        self.presentViewController(vc, animated: true, completion: nil)
         
-        if(passwordTextField.text != nil){
-            print("Password field: " + passwordTextField.text!)
-        }
+        
     }
+    
+    @IBAction func loginButtonPressed(sender: AnyObject) {
+        MBProgressHUD.showHUDAddedTo(view, animated: true)
+        performSelector(#selector(RootViewController.hideHUDWithDelay), withObject: nil, afterDelay: 3.0)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
