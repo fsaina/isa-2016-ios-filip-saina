@@ -22,7 +22,7 @@
 		B56F71D31D2A6BE30031715C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56F71D21D2A6BE30031715C /* Assets.xcassets */; };
 		B56F71D61D2A6BE30031715C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56F71D41D2A6BE30031715C /* LaunchScreen.storyboard */; };
 		B56F71E11D2A6BE30031715C /* PokemasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F71E01D2A6BE30031715C /* PokemasterUITests.swift */; };
-		B56F71EC1D2A6CE30031715C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F71EB1D2A6CE30031715C /* RootViewController.swift */; };
+		B56F71EC1D2A6CE30031715C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F71EB1D2A6CE30031715C /* LoginViewController.swift */; };
 		EC55E2246FDAF10FA0836BC6 /* Pods_PokemasterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5D9B87BBCF4238349C519D /* Pods_PokemasterUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +58,7 @@
 		B56F71DC1D2A6BE30031715C /* PokemasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56F71E01D2A6BE30031715C /* PokemasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemasterUITests.swift; sourceTree = "<group>"; };
 		B56F71E21D2A6BE30031715C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B56F71EB1D2A6CE30031715C /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = ../RootViewController.swift; sourceTree = "<group>"; };
+		B56F71EB1D2A6CE30031715C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		BFF380144785C6807CC66BE5 /* Pods-Pokemaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemaster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pokemaster/Pods-Pokemaster.debug.xcconfig"; sourceTree = "<group>"; };
 		EE5D9B87BBCF4238349C519D /* Pods_PokemasterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokemasterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1ABB81C48BD103BDB42B904 /* Pods_Pokemaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokemaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +115,7 @@
 		B53CB3721D3D86DC008C5274 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B56F71EB1D2A6CE30031715C /* RootViewController.swift */,
+				B56F71EB1D2A6CE30031715C /* LoginViewController.swift */,
 				B550926F1D328B18008F90EE /* RegisterViewController.swift */,
 				B55092711D3290D5008F90EE /* HomeViewController.swift */,
 			);
@@ -363,7 +363,7 @@
 				B53CB36F1D3D3F6A008C5274 /* TableViewController.swift in Sources */,
 				B53CB35F1D3D119B008C5274 /* Util.swift in Sources */,
 				B53CB36B1D3D3B83008C5274 /* Pokemon2TableViewCell.swift in Sources */,
-				B56F71EC1D2A6CE30031715C /* RootViewController.swift in Sources */,
+				B56F71EC1D2A6CE30031715C /* LoginViewController.swift in Sources */,
 				B55092701D328B18008F90EE /* RegisterViewController.swift in Sources */,
 				B53CB3631D3D23BB008C5274 /* User.swift in Sources */,
 			);

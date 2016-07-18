@@ -17,7 +17,6 @@ import Unbox
  */
 class RegisterViewController: UIViewController {
     
-    
     @IBOutlet weak var emailTextField: UITextField!
 
     @IBOutlet weak var nicknameTextField: UITextField!

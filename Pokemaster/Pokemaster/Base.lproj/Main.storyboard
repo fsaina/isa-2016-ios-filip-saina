@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="Pokemaster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Pokemaster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -45,7 +45,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cod-Ks-7gA">
-                                <rect key="frame" x="20" y="424" width="339" height="50"/>
+                                <rect key="frame" x="20" y="434" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uQE-Q6-qwr"/>
                                 </constraints>
@@ -94,7 +94,7 @@
                             <constraint firstItem="9r7-zf-toz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="126" id="DLQ-aY-CCg"/>
                             <constraint firstItem="EPk-EX-YpC" firstAttribute="centerX" secondItem="9r7-zf-toz" secondAttribute="centerX" id="DVr-ux-GvN"/>
                             <constraint firstItem="a2Y-vI-kSz" firstAttribute="leading" secondItem="cod-Ks-7gA" secondAttribute="leading" id="HKM-76-cOH"/>
-                            <constraint firstItem="RfA-Vh-lBh" firstAttribute="top" secondItem="cod-Ks-7gA" secondAttribute="bottom" constant="75" id="HmQ-99-grA"/>
+                            <constraint firstItem="RfA-Vh-lBh" firstAttribute="top" secondItem="cod-Ks-7gA" secondAttribute="bottom" constant="65" id="HmQ-99-grA"/>
                             <constraint firstItem="a2Y-vI-kSz" firstAttribute="trailing" secondItem="cod-Ks-7gA" secondAttribute="trailing" id="JIt-tE-slU"/>
                             <constraint firstItem="EPk-EX-YpC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="Lyf-2l-aMv"/>
                             <constraint firstAttribute="bottomMargin" secondItem="a2Y-vI-kSz" secondAttribute="bottom" constant="240" id="Mjx-E1-6ki"/>

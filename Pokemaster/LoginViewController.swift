@@ -15,7 +15,7 @@ import Unbox
  * Login view controller class. Contains all the necessary logic for
  * handling the login process.
  */
-class RootViewController: UIViewController {
+class LoginViewController: UIViewController {
     
     // refference to the email text field
     @IBOutlet weak var emailTextField: UITextField!
