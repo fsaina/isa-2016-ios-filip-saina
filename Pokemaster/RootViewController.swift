@@ -30,11 +30,8 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         self.passwordTextField.secureTextEntry = true
         
-        emailTextField.setTextFieldLeftIcon("mail.png")
-        emailTextField.setBottomBorderTextField();
-        
-        passwordTextField.setTextFieldLeftIcon("lock.png")
-        passwordTextField.setBottomBorderTextField();
+        emailTextField.textFieldAsStandard("mail.png")
+        passwordTextField.textFieldAsStandard("lock.png")
         
     }
     

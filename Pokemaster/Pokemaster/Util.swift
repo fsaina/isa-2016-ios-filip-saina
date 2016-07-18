@@ -5,25 +5,28 @@ import UIKit
 
 extension UITextField {
     
-    func setTextFieldLeftIcon(imageString: String!){
-        
+    func textFieldAsStandard(imageString: String){
         let imageView = UIImageView();
         let image = UIImage(named: imageString);
         
         imageView.image = image;
-        imageView.frame = CGRect(x: 5, y: 5, width: 30, height: 30)
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.frame = CGRect(x: 10, y: 10, width: image!.size.width + 25 , height: image!.size.height + 10)
         self.leftView = imageView;
         self.leftViewMode = UITextFieldViewMode.Always
+        
+        setBottomBorderTextField(image)
+        
     }
     
-    func setBottomBorderTextField(){
+    private func setBottomBorderTextField(image: UIImage!){
         
         let border = CALayer()
         let width = CGFloat(2.0)
         border.borderColor = UIColor.lightGrayColor().CGColor
         border.frame = CGRect(x: 0,
                               y: self.frame.size.height - width,
-                              width:  self.frame.size.width,
+                              width:  self.frame.size.width + image.size.width ,
                               height: self.frame.size.height)
         
         border.borderWidth = width

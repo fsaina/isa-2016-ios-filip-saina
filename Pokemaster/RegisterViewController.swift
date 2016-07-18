@@ -31,17 +31,12 @@ class RegisterViewController: UIViewController {
     //Entry point of the view
     override func viewDidLoad() {
         
-        // set underlying borders
-        emailTextField.setBottomBorderTextField()
-        nicknameTextField.setBottomBorderTextField()
-        passwordTextField.setBottomBorderTextField()
-        confirmPasswordTextField.setBottomBorderTextField()
-        
         // set images with every textfield
-        emailTextField.setTextFieldLeftIcon("mail.png")
-        nicknameTextField.setTextFieldLeftIcon("user.png")
-        passwordTextField.setTextFieldLeftIcon("lock.png")
-        confirmPasswordTextField.setTextFieldLeftIcon("lock.png")
+        emailTextField.textFieldAsStandard("mail.png")
+        nicknameTextField.textFieldAsStandard("user.png")
+        passwordTextField.textFieldAsStandard("lock.png")
+        confirmPasswordTextField.textFieldAsStandard("lock.png")
+        
     
     }
     
