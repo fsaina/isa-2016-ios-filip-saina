@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8CC30E95EDBA1D780A5AA18F /* Pods_Pokemaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ABB81C48BD103BDB42B904 /* Pods_Pokemaster.framework */; };
 		B53CB35F1D3D119B008C5274 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53CB35E1D3D119B008C5274 /* Util.swift */; };
+		B53CB3611D3D1CB3008C5274 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = B53CB3601D3D1CB3008C5274 /* user.png */; };
 		B550926D1D328899008F90EE /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = B550926B1D328899008F90EE /* lock.png */; };
 		B550926E1D328899008F90EE /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = B550926C1D328899008F90EE /* mail.png */; };
 		B55092701D328B18008F90EE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550926F1D328B18008F90EE /* RegisterViewController.swift */; };
@@ -38,6 +39,7 @@
 		8064D0EA4F0760FC61DAE1B9 /* Pods-PokemasterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemasterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokemasterUITests/Pods-PokemasterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		82D84B0BF6FC789D65BF80DF /* Pods-Pokemaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pokemaster/Pods-Pokemaster.release.xcconfig"; sourceTree = "<group>"; };
 		B53CB35E1D3D119B008C5274 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Pokemaster/Util.swift; sourceTree = "<group>"; };
+		B53CB3601D3D1CB3008C5274 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		B550926B1D328899008F90EE /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		B550926C1D328899008F90EE /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
 		B550926F1D328B18008F90EE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				B55092711D3290D5008F90EE /* HomeViewController.swift */,
 				B550926F1D328B18008F90EE /* RegisterViewController.swift */,
 				B550926B1D328899008F90EE /* lock.png */,
+				B53CB3601D3D1CB3008C5274 /* user.png */,
 				B550926C1D328899008F90EE /* mail.png */,
 				B56F71EB1D2A6CE30031715C /* RootViewController.swift */,
 				B56F71CA1D2A6BE30031715C /* Pokemaster */,
@@ -234,6 +237,7 @@
 			files = (
 				B550926D1D328899008F90EE /* lock.png in Resources */,
 				B550926E1D328899008F90EE /* mail.png in Resources */,
+				B53CB3611D3D1CB3008C5274 /* user.png in Resources */,
 				B56F71D61D2A6BE30031715C /* LaunchScreen.storyboard in Resources */,
 				B56F71D31D2A6BE30031715C /* Assets.xcassets in Resources */,
 				B56F71D11D2A6BE30031715C /* Main.storyboard in Resources */,
