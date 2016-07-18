@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8CC30E95EDBA1D780A5AA18F /* Pods_Pokemaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ABB81C48BD103BDB42B904 /* Pods_Pokemaster.framework */; };
+		B53CB35F1D3D119B008C5274 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53CB35E1D3D119B008C5274 /* Util.swift */; };
 		B550926D1D328899008F90EE /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = B550926B1D328899008F90EE /* lock.png */; };
 		B550926E1D328899008F90EE /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = B550926C1D328899008F90EE /* mail.png */; };
 		B55092701D328B18008F90EE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550926F1D328B18008F90EE /* RegisterViewController.swift */; };
@@ -36,6 +37,7 @@
 		2B5C0A4DB3D6865B60345AB7 /* Pods-PokemasterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemasterUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokemasterUITests/Pods-PokemasterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8064D0EA4F0760FC61DAE1B9 /* Pods-PokemasterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemasterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokemasterUITests/Pods-PokemasterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		82D84B0BF6FC789D65BF80DF /* Pods-Pokemaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pokemaster/Pods-Pokemaster.release.xcconfig"; sourceTree = "<group>"; };
+		B53CB35E1D3D119B008C5274 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Pokemaster/Util.swift; sourceTree = "<group>"; };
 		B550926B1D328899008F90EE /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		B550926C1D328899008F90EE /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
 		B550926F1D328B18008F90EE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		B56F71BF1D2A6BE30031715C = {
 			isa = PBXGroup;
 			children = (
+				B53CB35E1D3D119B008C5274 /* Util.swift */,
 				B55092711D3290D5008F90EE /* HomeViewController.swift */,
 				B550926F1D328B18008F90EE /* RegisterViewController.swift */,
 				B550926B1D328899008F90EE /* lock.png */,
@@ -332,6 +335,7 @@
 				B55092721D3290D5008F90EE /* HomeViewController.swift in Sources */,
 				B56F71CE1D2A6BE30031715C /* ViewController.swift in Sources */,
 				B56F71CC1D2A6BE30031715C /* AppDelegate.swift in Sources */,
+				B53CB35F1D3D119B008C5274 /* Util.swift in Sources */,
 				B56F71EC1D2A6CE30031715C /* RootViewController.swift in Sources */,
 				B55092701D328B18008F90EE /* RegisterViewController.swift in Sources */,
 			);
