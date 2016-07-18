@@ -8,6 +8,8 @@
 
 import UIKit
 import MBProgressHUD
+import Alamofire
+import Unbox
 
 /**
  * Login view controller class. Contains all the necessary logic for
@@ -43,9 +45,79 @@ class RootViewController: UIViewController {
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
-    @IBAction func loginButtonPressed(sender: AnyObject) {
+    
+    private func showSpinner(){
         MBProgressHUD.showHUDAddedTo(view, animated: true)
-        performSelector(#selector(RootViewController.hideHUDWithDelay), withObject: nil, afterDelay: 3.0)
+    }
+    
+    private func hideSpinner(){
+        MBProgressHUD.hideHUDForView(view, animated: true)
+    }
+    
+    @IBAction func loginButtonPressed(sender: AnyObject) {
+        
+        guard let username = emailTextField?.text where username.characters.count > 0,
+            let password = passwordTextField?.text where password.characters.count > 0 else{
+                
+                createAlertController(
+                    "Mew is not pleased!",
+                    message: "Please enter a valid username and password")
+                
+                return
+        }
+        
+        // Now onto networking
+        let params = ["user": ["email": username, "password": password]]
+        
+        showSpinner()
+        
+        Alamofire.request(.POST,
+            "https://pokeapi.infinum.co/api/v1/users/login",
+            parameters: params,
+            encoding: .JSON).validate().responseJSON {(response) in
+            
+            switch response.result {
+            case .Success:
+                
+                if let data = response.data {
+                    do {
+                        let user: User = try Unbox(data)
+                        //TODO store user data for shared view acess
+                        
+                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
+                        self.presentViewController(vc, animated:true, completion:nil)
+                        
+                        
+                    } catch _ {
+                        self.createAlertController(
+                            "Error parsing the data",
+                            message: "An error occured while parsing the data -- please try again later")
+                    }
+                } else {
+                    self.createAlertController(
+                        "Service unavailable",
+                        message: "An error occured -- please try again later")
+                }
+                
+            case .Failure(let error):
+                self.createAlertController(
+                    "Error",
+                    message: "\(error.localizedDescription)")
+            }
+        }
+
+        
+    }
+    
+    private func createAlertController(title:String, message:String){
+        self.hideSpinner()
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        alert.addAction(okAction)
+        presentViewController(alert, animated: true, completion: nil)
+        
     }
     
 

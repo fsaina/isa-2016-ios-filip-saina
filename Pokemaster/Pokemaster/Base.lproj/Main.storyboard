@@ -63,7 +63,7 @@
                                     <color key="titleColor" red="0.10980392156862745" green="0.16470588235294117" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b2K-uK-C7L" kind="show" id="RyC-aV-hlt"/>
+                                    <segue destination="b2K-uK-C7L" kind="show" id="4Pi-qu-Tsr"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2Y-vI-kSz">
@@ -194,7 +194,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="ERH-7h-m3O"/>
@@ -211,7 +211,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="9w4-cT-UCp"/>
@@ -228,7 +228,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="bzS-ku-eiF"/>
@@ -245,7 +245,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="A5e-51-pd2"/>
@@ -254,18 +254,17 @@
                                 </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMF-Sk-XS0">
-                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
+                                <rect key="frame" x="-4" y="611" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="AG6-Co-qFz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Log in">
+                                <state key="normal" title="Register">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s4K-WD-xal"/>
-                                    <action selector="loginButtonPressed:" destination="b2K-uK-C7L" eventType="touchUpInside" id="umI-Cu-Rdw"/>
+                                    <action selector="registerButtonPressed:" destination="b2K-uK-C7L" eventType="touchUpInside" id="crm-jg-xmQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -288,18 +287,91 @@
                             <constraint firstItem="zPK-OG-nG6" firstAttribute="trailing" secondItem="Mcg-aZ-rhz" secondAttribute="trailing" id="zxK-Kk-nN1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign up" id="RmY-Ln-f83"/>
+                    <navigationItem key="navigationItem" title="Sign up" id="cQf-nc-wtF"/>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="Mcg-aZ-rhz" id="2qz-mL-fAO"/>
                         <outlet property="emailTextField" destination="iYT-hc-4m7" id="FUg-s5-Mkz"/>
-                        <outlet property="navigationViewBackButton" destination="RmY-Ln-f83" id="hHp-it-jf4"/>
                         <outlet property="nicknameTextField" destination="3Pj-4T-fpb" id="Ove-b7-4vy"/>
                         <outlet property="passwordTextField" destination="zPK-OG-nG6" id="DPJ-YG-Z0N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BHO-AV-Bp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813.5" y="386.5"/>
+            <point key="canvasLocation" x="1811.5" y="386.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Tau-DP-qFe">
+            <objects>
+                <viewController id="Hpc-7t-VfU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lgg-Au-XYu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xrl-gZ-1Lm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x3v-ta-6uE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eoA-wm-yaU" customClass="TableViewCon">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="descriptionCell" rowHeight="114" id="b0u-2N-Enf" customClass="Pokemon2TableViewCell" customModule="Pokemaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="114"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b0u-2N-Enf" id="ARR-lW-MEn">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="113"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0B-3A-Avg">
+                                                    <rect key="frame" x="8" y="0.0" width="10" height="113"/>
+                                                    <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="10" id="U71-vw-96l"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7r-jW-gJS">
+                                                    <rect key="frame" x="26" y="8" width="566" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="n16-Fj-6oB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osz-8e-bF2">
+                                                    <rect key="frame" x="26" y="37" width="566" height="68"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Osz-8e-bF2" secondAttribute="trailing" constant="8" id="2By-fa-LaK"/>
+                                                <constraint firstItem="Y7r-jW-gJS" firstAttribute="leading" secondItem="a0B-3A-Avg" secondAttribute="trailing" constant="8" id="9eO-qg-kk9"/>
+                                                <constraint firstItem="Osz-8e-bF2" firstAttribute="leading" secondItem="a0B-3A-Avg" secondAttribute="trailing" constant="8" id="CUz-I8-Lia"/>
+                                                <constraint firstItem="a0B-3A-Avg" firstAttribute="top" secondItem="ARR-lW-MEn" secondAttribute="topMargin" constant="-8" id="Hf9-uJ-5aB"/>
+                                                <constraint firstItem="a0B-3A-Avg" firstAttribute="leading" secondItem="ARR-lW-MEn" secondAttribute="leadingMargin" id="Hy6-PL-4qO"/>
+                                                <constraint firstAttribute="bottom" secondItem="Osz-8e-bF2" secondAttribute="bottom" constant="8" id="KUA-gt-gb1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="a0B-3A-Avg" secondAttribute="bottom" constant="-8" id="V8w-IV-6fQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="Y7r-jW-gJS" secondAttribute="trailing" constant="8" id="an0-HM-E0q"/>
+                                                <constraint firstItem="Y7r-jW-gJS" firstAttribute="top" secondItem="ARR-lW-MEn" secondAttribute="top" constant="8" id="vi9-Tf-GgR"/>
+                                                <constraint firstItem="Osz-8e-bF2" firstAttribute="top" secondItem="Y7r-jW-gJS" secondAttribute="bottom" constant="8" id="vv1-VU-zD8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="pokemonDescriptionLabel" destination="Osz-8e-bF2" id="lHy-Mw-Ie2"/>
+                                            <outlet property="pokemonNameLabel" destination="Y7r-jW-gJS" id="u9O-h4-Qhc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="11B-N3-HDr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2511" y="387"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RuA-DL-VOq">
