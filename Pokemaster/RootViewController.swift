@@ -28,45 +28,19 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         self.passwordTextField.secureTextEntry = true
         
-        setBottomBorderTextField(emailTextField)
-        setBottomBorderTextField(passwordTextField)
+        emailTextField.setTextFieldLeftIcon("mail.png")
+        emailTextField.setBottomBorderTextField();
         
-        setTextFieldLeftIcoc(emailTextField, imageString: "lock.png")
-        setTextFieldLeftIcoc(passwordTextField, imageString: "mail.png")
+        passwordTextField.setTextFieldLeftIcon("lock.png")
+        passwordTextField.setBottomBorderTextField();
         
     }
-    
-    private func setTextFieldLeftIcoc(textField: UITextField, imageString: String!){
-        
-        let imageView = UIImageView();
-        let image = UIImage(named: imageString);
-        
-        imageView.image = image;
-        imageView.frame = CGRect(x: 5, y: 5, width: 30, height: 30)
-        textField.leftView = imageView;
-        textField.leftViewMode = UITextFieldViewMode.Always
-    }
-    
-    private func setBottomBorderTextField(textField: UITextField){
-        
-        let border = CALayer()
-        let width = CGFloat(2.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
-        
-        border.borderWidth = width
-        textField.layer.addSublayer(border)
-        textField.layer.masksToBounds = true
-    }
-    
     
     
     func hideHUDWithDelay(){
         MBProgressHUD.hideHUDForView(view, animated:true)
         let vc = self.storyboard!.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
         self.presentViewController(vc, animated: true, completion: nil)
-        
-        
     }
     
     @IBAction func loginButtonPressed(sender: AnyObject) {
