@@ -252,8 +252,8 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMF-Sk-XS0">
-                                <rect key="frame" x="-4" y="611" width="375" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMF-Sk-XS0">
+                                <rect key="frame" x="-4" y="612" width="383" height="55"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="AG6-Co-qFz"/>
@@ -292,6 +292,7 @@
                         <outlet property="emailTextField" destination="iYT-hc-4m7" id="FUg-s5-Mkz"/>
                         <outlet property="nicknameTextField" destination="3Pj-4T-fpb" id="Ove-b7-4vy"/>
                         <outlet property="passwordTextField" destination="zPK-OG-nG6" id="DPJ-YG-Z0N"/>
+                        <outlet property="registerButton" destination="VMF-Sk-XS0" id="8nt-lY-ZSW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BHO-AV-Bp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
