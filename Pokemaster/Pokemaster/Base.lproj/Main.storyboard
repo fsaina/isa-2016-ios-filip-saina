@@ -24,7 +24,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="63A-fy-qjK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Log in">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -58,7 +58,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="d6e-sX-aBA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" red="0.10980392156862745" green="0.16470588235294117" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -252,13 +252,13 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMF-Sk-XS0">
-                                <rect key="frame" x="-4" y="611" width="375" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMF-Sk-XS0">
+                                <rect key="frame" x="-4" y="612" width="383" height="55"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="AG6-Co-qFz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Register">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -292,6 +292,7 @@
                         <outlet property="emailTextField" destination="iYT-hc-4m7" id="FUg-s5-Mkz"/>
                         <outlet property="nicknameTextField" destination="3Pj-4T-fpb" id="Ove-b7-4vy"/>
                         <outlet property="passwordTextField" destination="zPK-OG-nG6" id="DPJ-YG-Z0N"/>
+                        <outlet property="registerButton" destination="VMF-Sk-XS0" id="8nt-lY-ZSW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BHO-AV-Bp5" userLabel="First Responder" sceneMemberID="firstResponder"/>

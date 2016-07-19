@@ -26,9 +26,18 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
     @IBOutlet weak var navigationViewBackButton: UINavigationItem!
+
+    @IBOutlet weak var registerButton: UIButton!
+
+    override func viewWillDisappear(animated: Bool) {
+        //make the navigation controller white
+        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
+    }
     
     //Entry point of the view
     override func viewDidLoad() {
+        //make the navigation controller blue
+        self.navigationController!.navigationBar.barTintColor = registerButton.backgroundColor
         
         // set images with every textfield
         emailTextField.textFieldAsStandard("mail.png")
