@@ -64,7 +64,12 @@ class LoginViewController: UIViewController {
         }
         
         // Now onto networking
-        let params = ["user": ["email": username, "password": password]]
+        let params = ["data" : [
+                        "type" : "session",
+                        "attributes": [
+                            "email": username,
+                            "password": password
+            ]]]
         
         showSpinner()
         
