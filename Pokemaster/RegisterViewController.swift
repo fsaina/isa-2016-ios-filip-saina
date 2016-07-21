@@ -130,7 +130,7 @@ class RegisterViewController: UIViewController {
                             let errorObject: ErrorMessage = try Unbox(data)
                             
                             self.createAlertController(
-                                "Error with the \(errorObject.source) field",
+                                "Error with the \(errorObject.errorSubject()) field",
                                 message: "\(errorObject.errorMessageDetail)")
                             
                             

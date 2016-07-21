@@ -102,15 +102,36 @@ class LoginViewController: UIViewController {
                 }
                 
             case .Failure(let error):
-                self.createAlertController(
-                    "Error",
-                    message: "\(error.localizedDescription)")
+                if let data = response.data {
+                    do{
+                        
+                        let errorObject: ErrorMessage = try Unbox(data)
+                        
+                        
+                        self.createAlertController(
+                            "Error with the \(errorObject.errorSubject()) field",
+                            message: "\(errorObject.errorMessageDetail)")
+                        
+                    } catch _ {
+                        
+                        
+                        self.createAlertController(
+                            "Error parsing the error data",
+                            message: "An error occured while parsing the error data -- please try again later")
+                    }
+                } else {
+                    
+                    self.createAlertController(
+                        "Error",
+                        message: "\(error.localizedDescription)")
+                }
+                
             }
         }
 
-        
-    }
     
+    }
+
     private func createAlertController(title:String, message:String){
         self.hideSpinner()
         let alert = UIAlertController(title: title,

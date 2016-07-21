@@ -20,4 +20,11 @@ struct ErrorMessage: Unboxable {
         source = unboxer.unbox("errors.0.source.pointer", isKeyPath: true)
     }
     
+    
+    // util function for extracting the subject name
+    func errorSubject() -> String {
+        let index2 = source.rangeOfString("/", options: .BackwardsSearch)?.startIndex
+        return source.substringFromIndex(index2!.advancedBy(1))
+    }
+    
 }
