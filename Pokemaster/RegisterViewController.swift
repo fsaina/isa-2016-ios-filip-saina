@@ -81,19 +81,24 @@ class RegisterViewController: UIViewController {
                 return
         }
         
-        let params = ["user": [
-            "username": username,
-            "email": email,
-            "password": password,
-            "password_confirmation": passwordConfirm]]
+        let params = ["data":[
+                            "type": "users",
+                            "attributes" : [
+                                "username": username,
+                                "email": email,
+                                "password": password,
+                                "password_confirmation": passwordConfirm
+            ]]]
+    
         
         showSpinner()
-        
         
         Alamofire.request(.POST,
             "https://pokeapi.infinum.co/api/v1/users/",
             parameters: params,
-            encoding: .JSON).validate().responseJSON {(response) in
+            encoding: .JSON)
+            .validate()
+            .responseJSON {(response) in
                 
                 switch response.result {
                 case .Success:
@@ -101,14 +106,20 @@ class RegisterViewController: UIViewController {
                     if let data = response.data {
                         do {
                             let user: User = try Unbox(data)
-                            //TODO store user
-                            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
-                            self.presentViewController(vc, animated:true, completion:nil)
+                            
+                            //set the singleton class variables
+                            UserSingleton.sharedInstance.authToken = user.authToken
+                            UserSingleton.sharedInstance.email = user.email
+                            UserSingleton.sharedInstance.username = user.username
+    
+                            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeTableViewController
+                            self.navigationController?.pushViewController(vc, animated: true)
                             
                         } catch _ {
                             self.createAlertController(
                                 "Error parsing the data",
                                 message: "An error occured while parsing the data -- please try again later")
+    
                         }
                     } else {
                         self.createAlertController(
@@ -117,10 +128,30 @@ class RegisterViewController: UIViewController {
                     }
                     
                 case .Failure(let error):
+                    if let data = response.data {
+                        do{
+                            
+                            let errorObject: ErrorMessage = try Unbox(data)
+                            
+                            self.createAlertController(
+                                "Error with the \(errorObject.errorSubject()) field",
+                                message: "\(errorObject.errorMessageDetail)")
+                            
+                            
+                        } catch _ {
+                            
+                            
+                            self.createAlertController(
+                                "Error parsing the error data",
+                                message: "An error occured while parsing the error data -- please try again later")
+                        }
+                    } else {
+                    
                     self.createAlertController(
                         "Error",
                         message: "\(error.localizedDescription)")
-                }
+                    }
+                    }
         }
         
         
