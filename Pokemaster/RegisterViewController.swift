@@ -108,7 +108,7 @@ class RegisterViewController: UIViewController {
                             let user: User = try Unbox(data)
                             //TODO store user
     
-                            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
+                            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeTableViewController
                             self.presentViewController(vc, animated:true, completion:nil)
                             
                         } catch _ {

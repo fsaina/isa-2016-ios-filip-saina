@@ -84,9 +84,14 @@ class LoginViewController: UIViewController {
                 if let data = response.data {
                     do {
                         let user: User = try Unbox(data)
-                        //TODO store user data for shared view acess
                         
-                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
+                        //set the singleton class variables
+                        UserSingleton.sharedInstance.authToken = user.authToken
+                        UserSingleton.sharedInstance.email = user.email
+                        UserSingleton.sharedInstance.username = user.username
+                        self.hideSpinner()
+                        
+                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeTableViewController
                         self.presentViewController(vc, animated:true, completion:nil)
                         
                         
@@ -103,6 +108,7 @@ class LoginViewController: UIViewController {
                 
             case .Failure(let error):
                 if let data = response.data {
+                    print("Error data: \(error.localizedDescription))")
                     do{
                         
                         let errorObject: ErrorMessage = try Unbox(data)
