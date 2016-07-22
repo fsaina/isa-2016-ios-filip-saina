@@ -167,7 +167,7 @@ class HomeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = homeTableView.dequeueReusableCellWithIdentifier("pokemonCell") as! HomeTableViewCell!
         
-        cell.pokemonNameLabel.text = self.pokeList[indexPath.item].name
+        cell.pokemonNameLabel.text = self.pokeList[indexPath.section].name
         // cell.pokemonImageView.image = ""  //TODO
         
         return cell
@@ -176,10 +176,4 @@ class HomeTableViewController: UITableViewController {
 }
 
 
-extension HomeViewController: UITableViewDelegate{
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-}
+

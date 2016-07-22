@@ -19,7 +19,6 @@
 		B550926D1D328899008F90EE /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = B550926B1D328899008F90EE /* lock.png */; };
 		B550926E1D328899008F90EE /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = B550926C1D328899008F90EE /* mail.png */; };
 		B55092701D328B18008F90EE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550926F1D328B18008F90EE /* RegisterViewController.swift */; };
-		B55092721D3290D5008F90EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55092711D3290D5008F90EE /* HomeViewController.swift */; };
 		B56F71CC1D2A6BE30031715C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F71CB1D2A6BE30031715C /* AppDelegate.swift */; };
 		B56F71D11D2A6BE30031715C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56F71CF1D2A6BE30031715C /* Main.storyboard */; };
 		B56F71D31D2A6BE30031715C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56F71D21D2A6BE30031715C /* Assets.xcassets */; };
@@ -56,7 +55,6 @@
 		B550926B1D328899008F90EE /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		B550926C1D328899008F90EE /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
 		B550926F1D328B18008F90EE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = ../RegisterViewController.swift; sourceTree = "<group>"; };
-		B55092711D3290D5008F90EE /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		B56F71C81D2A6BE30031715C /* Pokemaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokemaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56F71CB1D2A6BE30031715C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B56F71D01D2A6BE30031715C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			children = (
 				B56F71EB1D2A6CE30031715C /* LoginViewController.swift */,
 				B550926F1D328B18008F90EE /* RegisterViewController.swift */,
-				B55092711D3290D5008F90EE /* HomeViewController.swift */,
 				B53CB3731D3EB196008C5274 /* HomeTableViewController.swift */,
 			);
 			name = Controllers;
@@ -373,7 +370,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55092721D3290D5008F90EE /* HomeViewController.swift in Sources */,
 				B56F71CC1D2A6BE30031715C /* AppDelegate.swift in Sources */,
 				B53CB36F1D3D3F6A008C5274 /* TableViewController.swift in Sources */,
 				B53CB35F1D3D119B008C5274 /* Util.swift in Sources */,

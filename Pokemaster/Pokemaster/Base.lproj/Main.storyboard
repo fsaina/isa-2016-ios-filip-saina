@@ -44,7 +44,7 @@
                                     <constraint firstAttribute="height" constant="128" id="MkY-OU-fry"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cod-Ks-7gA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cod-Ks-7gA">
                                 <rect key="frame" x="20" y="434" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uQE-Q6-qwr"/>
@@ -66,7 +66,7 @@
                                     <segue destination="b2K-uK-C7L" kind="show" id="4Pi-qu-Tsr"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fsaina@fsaina.com" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2Y-vI-kSz">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2Y-vI-kSz">
                                 <rect key="frame" x="20" y="377" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cNX-zD-pb4"/>
@@ -197,8 +197,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="homeTableView" destination="TUM-Gd-QOr" id="Doh-IX-54F"/>
-                        <outlet property="tableView" destination="TUM-Gd-QOr" id="325-Ob-tqe"/>
+                        <outlet property="homeTableView" destination="TUM-Gd-QOr" id="NXY-hx-K1s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2rc-Ia-ZYM" userLabel="First Responder" sceneMemberID="firstResponder"/>

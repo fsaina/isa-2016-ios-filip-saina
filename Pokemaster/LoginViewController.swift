@@ -36,13 +36,6 @@ class LoginViewController: UIViewController {
     }
     
     
-    func hideHUDWithDelay(){
-        MBProgressHUD.hideHUDForView(view, animated:true)
-        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
-        self.presentViewController(vc, animated: true, completion: nil)
-    }
-    
-    
     private func showSpinner(){
         MBProgressHUD.showHUDAddedTo(view, animated: true)
     }
@@ -91,7 +84,7 @@ class LoginViewController: UIViewController {
                         UserSingleton.sharedInstance.username = user.username
                         self.hideSpinner()
                         
-                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeTableViewController
+                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController")   as! HomeTableViewController
                         self.navigationController?.pushViewController(vc, animated: true)
                         
                         
