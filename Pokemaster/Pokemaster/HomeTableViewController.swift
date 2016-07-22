@@ -23,7 +23,10 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
 
         loadListDataFromServer()
-
+        
+        let barBack = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeTableViewController.goBack))
+        self.navigationItem.leftBarButtonItem = barBack
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,10 +34,60 @@ class HomeTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func goBack() {
+        
+        
+        
+        let headers = [
+            "Authorization": "Token token=\(UserSingleton.sharedInstance.authToken), email=\(UserSingleton.sharedInstance.email)",
+            "Content-Type": "text/html"
+        ]
+        
+        showSpinner()
+        
+        Alamofire.request(.DELETE, "https://pokeapi.infinum.co/api/v1/users/logout",headers:headers)
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    
+                   self.navigationController?.popToRootViewControllerAnimated(true)
+                    
+                case .Failure(let error):
+                    if let data = response.data {
+                        print("Error data: \(error.localizedDescription))")
+                        do{
+                            
+                            let errorObject: ErrorMessage = try Unbox(data)
+                            
+                            
+                            self.createAlertController(
+                                "Error with the \(errorObject.errorSubject()) field",
+                                message: "\(errorObject.errorMessageDetail)")
+                            
+                        } catch _ {
+                            
+                            
+                            self.createAlertController(
+                                "Error parsing the error data",
+                                message: "An error occured while parsing the error data -- please try again later")
+                        }
+                    } else {
+                        
+                        self.createAlertController(
+                            "Error",
+                            message: "\(error.localizedDescription)")
+                    }
+                }
+        }
+
+        
+        
+    }
+    
     private func reloadList(){
         homeTableView.reloadData()
     }
-    
     
     private func showSpinner(){
         MBProgressHUD.showHUDAddedTo(view, animated: true)
@@ -45,9 +98,6 @@ class HomeTableViewController: UITableViewController {
     }
     
     private func loadListDataFromServer(){
-        
-        
-        //DEBUG--REMOVE LATER
         
         let headers = [
             "Authorization": "Token token=\(UserSingleton.sharedInstance.authToken), email=\(UserSingleton.sharedInstance.email)",
