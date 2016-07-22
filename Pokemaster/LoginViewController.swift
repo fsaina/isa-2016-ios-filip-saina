@@ -92,7 +92,7 @@ class LoginViewController: UIViewController {
                         self.hideSpinner()
                         
                         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeTableViewController
-                        self.presentViewController(vc, animated:true, completion:nil)
+                        self.navigationController?.pushViewController(vc, animated: true)
                         
                         
                     } catch _ {
