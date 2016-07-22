@@ -106,7 +106,11 @@ class RegisterViewController: UIViewController {
                     if let data = response.data {
                         do {
                             let user: User = try Unbox(data)
-                            //TODO store user
+                            
+                            //set the singleton class variables
+                            UserSingleton.sharedInstance.authToken = user.authToken
+                            UserSingleton.sharedInstance.email = user.email
+                            UserSingleton.sharedInstance.username = user.username
     
                             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeTableViewController
                             self.navigationController?.pushViewController(vc, animated: true)
