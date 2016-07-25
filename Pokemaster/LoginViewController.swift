@@ -31,9 +31,6 @@ class LoginViewController: BaseView{
         super.viewDidLoad()
         self.passwordTextField.secureTextEntry = true
         
-        //for networking
-        super.viewRef = view
-        
         emailTextField.textFieldAsStandard("mail.png")
         passwordTextField.textFieldAsStandard("lock.png")
         

@@ -15,7 +15,7 @@ import Unbox
  * Login view controller class. Contains all the necessary logic for
  * handling the login process.
  */
-class RegisterViewController: UIViewController {
+class RegisterViewController: BaseView {
     
     @IBOutlet weak var emailTextField: UITextField!
 
@@ -48,17 +48,28 @@ class RegisterViewController: UIViewController {
     
     }
     
-    
-    private func createAlertController(title:String, message:String){
-        self.hideSpinner()
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
-        alert.addAction(okAction)
-        presentViewController(alert, animated: true, completion: nil)
+    override func onResponseSuccess(data: NSData) {
         
+        hideSpinner()
+        
+        do {
+            let user: User = try Unbox(data)
+            
+            //set the singleton class variables
+            UserSingleton.sharedInstance.authToken = user.authToken
+            UserSingleton.sharedInstance.email = user.email
+            UserSingleton.sharedInstance.username = user.username
+            
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeTableViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } catch _ {
+            
+            self.onParseError()
+            
+        }
     }
+
 
     @IBAction func registerButtonPressed(sender: AnyObject) {
         
@@ -85,68 +96,7 @@ class RegisterViewController: UIViewController {
     
         
         showSpinner()
-        
-        Alamofire.request(.POST,
-            "https://pokeapi.infinum.co/api/v1/users/",
-            parameters: params,
-            encoding: .JSON)
-            .validate()
-            .responseJSON {(response) in
-                
-                switch response.result {
-                case .Success:
-                    
-                    if let data = response.data {
-                        do {
-                            let user: User = try Unbox(data)
-                            
-                            //set the singleton class variables
-                            UserSingleton.sharedInstance.authToken = user.authToken
-                            UserSingleton.sharedInstance.email = user.email
-                            UserSingleton.sharedInstance.username = user.username
-    
-                            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeTableViewController
-                            self.navigationController?.pushViewController(vc, animated: true)
-                            
-                        } catch _ {
-                            self.createAlertController(
-                                "Error parsing the data",
-                                message: "An error occured while parsing the data -- please try again later")
-    
-                        }
-                    } else {
-                        self.createAlertController(
-                            "Service unavailable",
-                            message: "An error occured -- please try again later")
-                    }
-                    
-                case .Failure(let error):
-                    if let data = response.data {
-                        do{
-                            
-                            let errorObject: ErrorMessage = try Unbox(data)
-                            
-                            self.createAlertController(
-                                "Error with the \(errorObject.errorSubject()) field",
-                                message: "\(errorObject.errorMessageDetail)")
-                            
-                            
-                        } catch _ {
-                            
-                            
-                            self.createAlertController(
-                                "Error parsing the error data",
-                                message: "An error occured while parsing the error data -- please try again later")
-                        }
-                    } else {
-                    
-                    self.createAlertController(
-                        "Error",
-                        message: "\(error.localizedDescription)")
-                    }
-                    }
-        }
-        
+        performRequest(.POST, apiUlr: "https://pokeapi.infinum.co/api/v1/users/", params: params)
         
     }
 

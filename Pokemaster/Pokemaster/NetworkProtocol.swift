@@ -83,13 +83,14 @@ extension NetworkableProtocol{
     }
 }
 
+/*
+ * Default class implementation containin the base logic for network manipulation
+ * In order to use:  - override onResponseSuccess 
+ *
+ * Note: this class does not set spinners
+ */
 
-//default class implementation
 class BaseView:UIViewController, NetworkableProtocol, AlertableProtocol{
-    
-    //must be set
-    var viewRef:UIView = UIView()
-    
     
     //dizaster -- swift has no abstract methods
     func onResponseSuccess(data:NSData){
@@ -106,18 +107,24 @@ class BaseView:UIViewController, NetworkableProtocol, AlertableProtocol{
     }
     
     func onResponseError(){
+        
+        hideSpinner()
         createAlertController(
             "Service unavailable",
             message: "An error occured -- please try again later")
     }
     
     func onParseError(){
+        
+        hideSpinner()
         createAlertController(
             "Error parsing the data",
             message: "An error occured while parsing the data -- please try again later")
     }
     
     func onFailureResponseData(error:NSError){
+        
+        hideSpinner()
         self.createAlertController(
             "Error",
             message: "\(error.localizedDescription)")
@@ -125,6 +132,7 @@ class BaseView:UIViewController, NetworkableProtocol, AlertableProtocol{
     
     func onFailureError(data:NSData, errorObject:ErrorMessage){
         
+        hideSpinner()
         self.createAlertController(
             "Error with the \(errorObject.errorSubject()) field",
             message: "\(errorObject.errorMessageDetail)")
