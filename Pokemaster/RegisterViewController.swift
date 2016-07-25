@@ -48,13 +48,6 @@ class RegisterViewController: UIViewController {
     
     }
     
-    private func showSpinner(){
-        MBProgressHUD.showHUDAddedTo(view, animated: true)
-    }
-    
-    private func hideSpinner(){
-        MBProgressHUD.hideHUDForView(view, animated: true)
-    }
     
     private func createAlertController(title:String, message:String){
         self.hideSpinner()

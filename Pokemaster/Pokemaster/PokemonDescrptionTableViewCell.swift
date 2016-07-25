@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokemonDescrptionTableViewCell: UITableViewCell, PokemonDescriptionDataHolderProtocol {
+class PokemonDescrptionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

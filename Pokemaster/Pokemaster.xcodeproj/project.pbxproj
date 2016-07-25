@@ -129,6 +129,7 @@
 		B53CB3721D3D86DC008C5274 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5893F0E1D466AD7006D17E5 /* NetworkProtocol.swift */,
 				B56F71EB1D2A6CE30031715C /* LoginViewController.swift */,
 				B550926F1D328B18008F90EE /* RegisterViewController.swift */,
 				B53CB3731D3EB196008C5274 /* HomeTableViewController.swift */,
@@ -172,7 +173,6 @@
 				B56F71D21D2A6BE30031715C /* Assets.xcassets */,
 				B56F71D41D2A6BE30031715C /* LaunchScreen.storyboard */,
 				B56F71D71D2A6BE30031715C /* Info.plist */,
-				B5893F0E1D466AD7006D17E5 /* NetworkProtocol.swift */,
 			);
 			path = Pokemaster;
 			sourceTree = "<group>";
