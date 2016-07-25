@@ -407,7 +407,7 @@
                                     <outlet property="nameLabel" destination="sVr-Db-6yv" id="EEN-qL-sUd"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataCell" textLabel="HTd-Pg-1IU" detailTextLabel="1Yq-gV-2ne" rowHeight="43" style="IBUITableViewCellStyleValue2" id="sp3-NN-TVD" customClass="Pokemon2TableViewCell" customModule="Pokemaster" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataCell" textLabel="HTd-Pg-1IU" detailTextLabel="1Yq-gV-2ne" rowHeight="43" style="IBUITableViewCellStyleValue2" id="sp3-NN-TVD" customClass="TitleDescrptionTableViewCell" customModule="Pokemaster" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="151" width="600" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sp3-NN-TVD" id="i6j-Rh-dTg">
@@ -430,6 +430,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="detailLabel" destination="1Yq-gV-2ne" id="opZ-BS-Do8"/>
+                                    <outlet property="titleLabel" destination="HTd-Pg-1IU" id="7xy-UL-IAN"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -9,12 +9,22 @@
 import UIKit
 
 class PokemonDescriptionTableViewController: UITableViewController {
+    
+    private var pokemonItemDescription:[PokemonDescriptionDataHolderProtocol] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60
+        
+        tableView.sectionFooterHeight = 0
+        tableView.sectionHeaderHeight = 0
+        
+        let pokemon:Pokemon
+        
+        pokemonItemDescription.append(PokemonDescriptionHolder(title: "asfd", description: "asdf"))
+        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "asdf", description: "aa"))
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +35,7 @@ class PokemonDescriptionTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return pokemonItemDescription.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,13 +43,28 @@ class PokemonDescriptionTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("descriptionCell") as! PokemonDescrptionTableViewCell
         
-        cell.nameLabel.text = "Bulbasaur"
-        cell.descriptionLabel.text = "Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker green patches. It has red eyes with white pupils and pointed, ear-like structures on top of its head. Its snout is short and blunt, and it has a wide mouth. A pair of small, pointed teeth are visible in the upper jaw when its mouth is open. Each of its thick legs ends with three sharp claws. On its back is a green plant bulb, which is grown from a seed planted there at birth. The bulb provides it with energy through photosynthesis as well as from the nutrient-rich seeds contained within."
+        let cellMember:PokemonDescriptionDataHolderProtocol = pokemonItemDescription[indexPath.section]
         
-        return cell
+        switch cellMember {
+        case is PokemonDescriptionHolder:
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! PokemonDescrptionTableViewCell
+            let cellElement = cellMember as! PokemonDescriptionHolder
+                
+            cell.nameLabel.text = cellElement.titleText
+            cell.descriptionLabel.text = cellElement.descriptionText
+            return cell
+            
+        case is PokemonTitleDescriptionHolder:
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! TitleDescrptionTableViewCell
+            let cellElement = cellMember as! PokemonTitleDescriptionHolder
+            
+            cell.titleLabel.text = cellElement.titleText
+            cell.detailLabel.text = cellElement.descriptionText
+            return cell
+            
+        default:
+            return cellMember as! UITableViewCell
+        }
     }
-
-
 }

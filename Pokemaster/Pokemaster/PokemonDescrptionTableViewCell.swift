@@ -8,10 +8,12 @@
 
 import UIKit
 
-class PokemonDescrptionTableViewCell: UITableViewCell {
+class PokemonDescrptionTableViewCell: UITableViewCell, PokemonDescriptionDataHolderProtocol {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,3 +27,46 @@ class PokemonDescrptionTableViewCell: UITableViewCell {
     }
 
 }
+
+
+protocol PokemonDescriptionDataHolderProtocol {
+    var tableIdentifier:String { get }
+}
+
+
+struct PokemonDescriptionHolder: PokemonDescriptionDataHolderProtocol  {
+    
+    
+    var titleText:String
+    var descriptionText:String
+    
+    init(title:String, description:String){
+        self.titleText = title
+        self.descriptionText = description
+    }
+    
+    var tableIdentifier: String {
+        return "descriptionCell"
+    }
+    
+}
+
+
+struct PokemonTitleDescriptionHolder: PokemonDescriptionDataHolderProtocol {
+    
+    var titleText:String
+    var descriptionText:String
+    
+    init(title:String, description:String){
+        self.titleText = title
+        self.descriptionText = description
+    }
+    
+    var tableIdentifier: String {
+        return "dataCell"
+    }
+}
+
+
+
+
