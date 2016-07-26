@@ -36,8 +36,6 @@ class RegisterViewController: BaseView {
     
     //Entry point of the view
     override func viewDidLoad() {
-        //make the navigation controller blue
-        self.navigationController!.navigationBar.barTintColor = registerButton.backgroundColor
         
         // set images with every textfield
         emailTextField.textFieldAsStandard("mail.png")
@@ -96,7 +94,7 @@ class RegisterViewController: BaseView {
     
         
         showSpinner()
-        performRequest(.POST, apiUlr: "https://pokeapi.infinum.co/api/v1/users/", params: params)
+        performRequest(.POST, apiUlr: "https://pokeapi.infinum.co/api/v1/users/", params: params, headers: nil)
         
     }
 

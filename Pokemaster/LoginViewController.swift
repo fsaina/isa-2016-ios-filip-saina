@@ -86,7 +86,7 @@ class LoginViewController: BaseView{
             ]]]
         
         showSpinner()
-        performRequest(.POST, apiUlr: "https://pokeapi.infinum.co/api/v1/users/login", params: params)
+        performRequest(.POST, apiUlr: "https://pokeapi.infinum.co/api/v1/users/login", params: params, headers: nil)
         
     }
     
@@ -106,3 +106,4 @@ extension UIViewController{
     }
     
 }
+

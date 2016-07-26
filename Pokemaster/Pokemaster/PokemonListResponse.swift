@@ -24,6 +24,10 @@ struct Pokemon{
     let id: Int
     let type: String
     let name: String
+    let imageUrl: String?
+    var description: String?
+    let height:Int
+    let weight:Int
 }
 
 extension Pokemon: Unboxable{
@@ -32,6 +36,15 @@ extension Pokemon: Unboxable{
         self.id = unboxer.unbox("id")
         self.type = unboxer.unbox("type")
         self.name = unboxer.unbox("attributes.name")
+        self.imageUrl = unboxer.unbox("attributes.image-url")
+        self.description = unboxer.unbox("attributes.description")
+        self.height = unboxer.unbox("attributes.height")
+        self.weight = unboxer.unbox("attributes.weight")
+        
+        if(self.description == nil){
+            self.description = ""
+        }
+        
     }
     
 }

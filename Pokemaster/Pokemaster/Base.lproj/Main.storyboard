@@ -44,7 +44,7 @@
                                     <constraint firstAttribute="height" constant="128" id="MkY-OU-fry"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cod-Ks-7gA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cod-Ks-7gA">
                                 <rect key="frame" x="20" y="434" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uQE-Q6-qwr"/>
@@ -66,7 +66,7 @@
                                     <segue destination="b2K-uK-C7L" kind="show" id="4Pi-qu-Tsr"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2Y-vI-kSz">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fsaina@fsaina.com" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2Y-vI-kSz">
                                 <rect key="frame" x="20" y="377" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cNX-zD-pb4"/>
@@ -192,7 +192,7 @@
                             <constraint firstItem="TUM-Gd-QOr" firstAttribute="leading" secondItem="TQq-XX-6s5" secondAttribute="leading" id="1N9-GQ-gl0"/>
                             <constraint firstAttribute="trailing" secondItem="TUM-Gd-QOr" secondAttribute="trailing" id="D0E-m5-RPT"/>
                             <constraint firstItem="TUM-Gd-QOr" firstAttribute="top" secondItem="TQq-XX-6s5" secondAttribute="top" id="Zne-s3-rc2"/>
-                            <constraint firstItem="fx8-ZR-3Ph" firstAttribute="top" secondItem="TUM-Gd-QOr" secondAttribute="bottom" id="ySj-yi-UeK"/>
+                            <constraint firstItem="fx8-ZR-3Ph" firstAttribute="top" secondItem="TUM-Gd-QOr" secondAttribute="bottom" id="b9k-tf-F3G"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -353,14 +353,55 @@
         <!--Pokemon Description Table View Controller-->
         <scene sceneID="44d-Yr-5Me">
             <objects>
-                <tableViewController id="sq9-Vb-VTG" customClass="PokemonDescriptionTableViewController" customModule="Pokemaster" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="pokemonDetailViewController" id="sq9-Vb-VTG" customClass="PokemonDescriptionTableViewController" customModule="Pokemaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="101" sectionHeaderHeight="18" sectionFooterHeight="18" id="Rqf-xg-g1H">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="170" id="GE5-lj-Ba0" customClass="ImageTableViewCell" customModule="Pokemaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="600" height="170"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GE5-lj-Ba0" id="jeY-iD-g9A">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o6s-ZC-0zo">
+                                            <rect key="frame" x="212" y="0.0" width="177" height="169"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="169" id="6gZ-pE-Ylc"/>
+                                                <constraint firstAttribute="width" constant="177" id="AMa-QU-JTO"/>
+                                                <constraint firstAttribute="height" constant="169" id="uj0-tp-WXs"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="6gZ-pE-Ylc"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="o6s-ZC-0zo" secondAttribute="bottom" constant="10" id="5T3-95-Oys"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="o6s-ZC-0zo" secondAttribute="bottom" constant="-8" id="Gkq-Xh-gn8"/>
+                                        <constraint firstItem="o6s-ZC-0zo" firstAttribute="top" secondItem="jeY-iD-g9A" secondAttribute="top" constant="10" id="Rf4-dn-SJA"/>
+                                        <constraint firstItem="o6s-ZC-0zo" firstAttribute="centerX" secondItem="jeY-iD-g9A" secondAttribute="centerX" id="UD7-lu-F8B"/>
+                                        <constraint firstItem="o6s-ZC-0zo" firstAttribute="top" secondItem="jeY-iD-g9A" secondAttribute="topMargin" constant="-8" id="rE4-U7-2Xa"/>
+                                        <constraint firstItem="o6s-ZC-0zo" firstAttribute="centerX" secondItem="jeY-iD-g9A" secondAttribute="centerX" id="uIN-Ax-pEd"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="5T3-95-Oys"/>
+                                            <exclude reference="Rf4-dn-SJA"/>
+                                            <exclude reference="uIN-Ax-pEd"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="pokeImageView" destination="o6s-ZC-0zo" id="neo-E2-2qB"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="101" id="7lE-id-Yx5" customClass="PokemonDescrptionTableViewCell" customModule="Pokemaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="600" height="101"/>
+                                <rect key="frame" x="0.0" y="220" width="600" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7lE-id-Yx5" id="Nbo-2C-gYe">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
@@ -407,22 +448,22 @@
                                     <outlet property="nameLabel" destination="sVr-Db-6yv" id="EEN-qL-sUd"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataCell" textLabel="HTd-Pg-1IU" detailTextLabel="1Yq-gV-2ne" rowHeight="43" style="IBUITableViewCellStyleValue2" id="sp3-NN-TVD" customClass="TitleDescrptionTableViewCell" customModule="Pokemaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="151" width="600" height="43"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataCell" textLabel="HTd-Pg-1IU" detailTextLabel="1Yq-gV-2ne" rowHeight="72" style="IBUITableViewCellStyleValue2" id="sp3-NN-TVD" customClass="TitleDescrptionTableViewCell" customModule="Pokemaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="321" width="600" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sp3-NN-TVD" id="i6j-Rh-dTg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HTd-Pg-1IU">
-                                            <rect key="frame" x="15" y="14" width="91" height="15"/>
+                                            <rect key="frame" x="15" y="28" width="91" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Yq-gV-2ne">
-                                            <rect key="frame" x="112" y="14" width="33" height="15"/>
+                                            <rect key="frame" x="112" y="28" width="33" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -435,12 +476,142 @@
                                     <outlet property="titleLabel" destination="HTd-Pg-1IU" id="7xy-UL-IAN"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="likeCell" rowHeight="120" id="mcK-XX-CbB" customClass="LikeDislikeTableViewCell" customModule="Pokemaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="393" width="600" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mcK-XX-CbB" id="Y4m-z3-LCE">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o56-jk-aKX">
+                                            <rect key="frame" x="213" y="17" width="56" height="56"/>
+                                            <color key="backgroundColor" red="0.35294117647058826" green="0.50196078431372548" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="56" id="54X-l3-qTR"/>
+                                                <constraint firstAttribute="width" constant="56" id="T3G-jD-ypz"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="like.png"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dU-UQ-f8d">
+                                            <rect key="frame" x="318" y="17" width="56" height="56"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="56" id="eqj-l7-Yha"/>
+                                                <constraint firstAttribute="width" constant="56" id="qwl-co-eg7"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="dislike.png"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Dislike" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wef-XV-eZ4">
+                                            <rect key="frame" x="321" y="79" width="50" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="7Qo-aY-vKC"/>
+                                                <constraint firstAttribute="height" constant="21" id="hgd-7g-Pp3"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf2-oo-wB7">
+                                            <rect key="frame" x="226" y="79" width="31" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="31" id="0kt-Ye-Hgh"/>
+                                                <constraint firstAttribute="height" constant="21" id="3NQ-dk-Psv"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rf2-oo-wB7" firstAttribute="top" secondItem="o56-jk-aKX" secondAttribute="bottom" constant="6" id="6HI-U7-OCp"/>
+                                        <constraint firstItem="rf2-oo-wB7" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="-10" id="AAm-dQ-hMw"/>
+                                        <constraint firstItem="o56-jk-aKX" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="-10" id="Mla-mK-R3u"/>
+                                        <constraint firstItem="9dU-UQ-f8d" firstAttribute="top" secondItem="Y4m-z3-LCE" secondAttribute="topMargin" constant="9" id="Mo7-PX-cso"/>
+                                        <constraint firstItem="o56-jk-aKX" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="-59" id="QCr-ed-IcJ"/>
+                                        <constraint firstItem="o56-jk-aKX" firstAttribute="top" secondItem="Y4m-z3-LCE" secondAttribute="topMargin" constant="9" id="UIz-et-O8h"/>
+                                        <constraint firstItem="rf2-oo-wB7" firstAttribute="top" secondItem="o56-jk-aKX" secondAttribute="bottom" constant="6" id="UaW-fx-uNj"/>
+                                        <constraint firstItem="wef-XV-eZ4" firstAttribute="top" secondItem="9dU-UQ-f8d" secondAttribute="bottom" constant="6" id="eXU-g6-pjB"/>
+                                        <constraint firstItem="9dU-UQ-f8d" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="46" id="jo6-eT-uvp"/>
+                                        <constraint firstItem="wef-XV-eZ4" firstAttribute="top" secondItem="9dU-UQ-f8d" secondAttribute="bottom" constant="6" id="uNe-5j-Wz7"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Mla-mK-R3u"/>
+                                            <exclude reference="AAm-dQ-hMw"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dislikeButton" destination="9dU-UQ-f8d" id="Db7-LT-G1A"/>
+                                    <outlet property="likeButton" destination="o56-jk-aKX" id="5WB-iL-qIq"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="80" id="FeP-hL-AQI" customClass="CommentTableViewCell" customModule="Pokemaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="513" width="600" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FeP-hL-AQI" id="aFV-SY-bcj">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjJ-hI-zLC">
+                                            <rect key="frame" x="27" y="8" width="76" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="2GI-yg-Wmg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0y-cx-VjI">
+                                            <rect key="frame" x="27" y="42" width="73" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="1U3-A4-4Ct"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvi-eY-zJc">
+                                            <rect key="frame" x="557" y="8" width="35" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="csm-qY-Ldk"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bjJ-hI-zLC" firstAttribute="top" secondItem="aFV-SY-bcj" secondAttribute="top" constant="10" id="6up-Tz-FhT"/>
+                                        <constraint firstItem="W0y-cx-VjI" firstAttribute="top" secondItem="bjJ-hI-zLC" secondAttribute="bottom" constant="15" id="TIm-Ql-olJ"/>
+                                        <constraint firstItem="W0y-cx-VjI" firstAttribute="top" secondItem="bjJ-hI-zLC" secondAttribute="bottom" constant="15" id="UGy-Js-WIX"/>
+                                        <constraint firstItem="W0y-cx-VjI" firstAttribute="leading" secondItem="aFV-SY-bcj" secondAttribute="leading" constant="30" id="UxJ-V3-ITA"/>
+                                        <constraint firstAttribute="trailing" secondItem="kvi-eY-zJc" secondAttribute="trailing" constant="15" id="ldE-8W-AD2"/>
+                                        <constraint firstItem="bjJ-hI-zLC" firstAttribute="leading" secondItem="aFV-SY-bcj" secondAttribute="leading" constant="30" id="nLY-RD-zlf"/>
+                                        <constraint firstAttribute="trailing" secondItem="kvi-eY-zJc" secondAttribute="trailing" constant="15" id="of8-dY-O63"/>
+                                        <constraint firstItem="kvi-eY-zJc" firstAttribute="top" secondItem="aFV-SY-bcj" secondAttribute="top" constant="15" id="rvJ-q7-eJm"/>
+                                        <constraint firstAttribute="bottom" secondItem="W0y-cx-VjI" secondAttribute="bottom" constant="16" id="uob-jF-4P3"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="ldE-8W-AD2"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="commentLabel" destination="W0y-cx-VjI" id="cLE-g4-D5P"/>
+                                    <outlet property="dateLabel" destination="kvi-eY-zJc" id="tuE-uP-4yd"/>
+                                    <outlet property="usernameLabel" destination="bjJ-hI-zLC" id="NmS-Co-oXf"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="sq9-Vb-VTG" id="7VH-N6-TC8"/>
                             <outlet property="delegate" destination="sq9-Vb-VTG" id="ewP-mX-zAM"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="Rqf-xg-g1H" id="ERx-Tq-nHl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huE-ZM-LrX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -450,5 +621,7 @@
     <resources>
         <image name="Pokeball" width="151" height="151"/>
         <image name="Pokedex_title" width="240" height="100"/>
+        <image name="dislike.png" width="127" height="128"/>
+        <image name="like.png" width="119" height="118"/>
     </resources>
 </document>

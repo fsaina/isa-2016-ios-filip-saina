@@ -162,7 +162,16 @@ class HomeTableViewController: UITableViewController {
         cell.pokemonNameLabel.text = self.pokeList[indexPath.section].name
         // cell.pokemonImageView.image = ""  //TODO
         
+        
         return cell
+    }
+    
+    //what to do on click
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        UserSingleton.sharedInstance.pokemonList = [self.pokeList[indexPath.section]]
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("pokemonDetailViewController") as! PokemonDescriptionTableViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

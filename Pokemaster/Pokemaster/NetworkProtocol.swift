@@ -37,11 +37,13 @@ protocol AlertableProtocol {
 
 extension NetworkableProtocol{
     
-    func performRequest(apiCallType:Alamofire.Method , apiUlr:String, params:Dictionary<String,AnyObject>) {
+    func performRequest(apiCallType:Alamofire.Method , apiUlr:String, params:Dictionary<String,AnyObject>?,headers:Dictionary<String,String>?) {
+        
         
         Alamofire.request(apiCallType,
             apiUlr,
             parameters: params,
+            headers: headers,
             encoding: .JSON).validate().responseJSON {(response) in
                 
                 switch response.result {
@@ -81,6 +83,27 @@ extension NetworkableProtocol{
                 }
         }
     }
+    
+    func createAlertController(title: String, message: String) {
+        
+    }
+    
+    func onResponseError(){
+        
+    }
+    
+    func onParseError(){
+        
+    }
+    
+    func onFailureResponseData(error:NSError){
+        
+    }
+    
+    func onFailureError(data:NSData, errorObject:ErrorMessage){
+        
+    }
+    
 }
 
 /*
@@ -95,6 +118,11 @@ class BaseView:UIViewController, NetworkableProtocol, AlertableProtocol{
     //dizaster -- swift has no abstract methods
     func onResponseSuccess(data:NSData){
         preconditionFailure("This method must be overridden")
+    }
+    
+    override func viewDidLoad() {
+        self.navigationController!.navigationBar.barTintColor = UIColor(netHex:0x314E8F)
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     func createAlertController(title: String, message: String) {
@@ -136,6 +164,20 @@ class BaseView:UIViewController, NetworkableProtocol, AlertableProtocol{
         self.createAlertController(
             "Error with the \(errorObject.errorSubject()) field",
             message: "\(errorObject.errorMessageDetail)")
+    }
+}
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(netHex:Int) {
+        self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
 }
 

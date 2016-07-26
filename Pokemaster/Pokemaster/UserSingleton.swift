@@ -20,10 +20,14 @@ class UserSingleton {
     //username of the user
     var username: String
     
+    //pokemons
+    var pokemonList:[Pokemon]
+    
     //private constructor
     private init() {
         authToken = ""
         email = ""
         username = ""
+        pokemonList = []
     }
 }

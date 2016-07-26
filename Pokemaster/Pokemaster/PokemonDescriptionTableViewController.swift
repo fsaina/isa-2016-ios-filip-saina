@@ -8,41 +8,66 @@
 
 import UIKit
 
-class PokemonDescriptionTableViewController: UITableViewController {
+class PokemonDescriptionTableViewController: BaseView{
+    
+    @IBOutlet var tableView: UITableView!
+    
     
     private var pokemonItemDescription:[PokemonDescriptionDataHolderProtocol] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60
         
         tableView.sectionFooterHeight = 0
         tableView.sectionHeaderHeight = 0
         
-        let pokemon:Pokemon
+        let pokemon:Pokemon = UserSingleton.sharedInstance.pokemonList[0]
         
-        pokemonItemDescription.append(PokemonDescriptionHolder(title: "asfd", description: "asdf"))
-        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "asdf", description: "aa"))
+        
+        if(pokemon.imageUrl != nil){
+            pokemonItemDescription.append(PokemonImageViewHolder(url: pokemon.imageUrl!))
+        }
+        
+        pokemonItemDescription.append(PokemonDescriptionHolder(title: pokemon.name,description: pokemon.description!))
+        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Height", description: String(pokemon.height)))
+        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Weight", description: String(pokemon.weight)))
+        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Abilities", description: "TODO"))
+        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Type", description: "TODO"))
+        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Gender", description: "TODO"))
+        pokemonItemDescription.append(PokemonLikeDislikeHolder())
+        pokemonItemDescription.append(PokemonCommentHolder(comment: "hue hue hue", date: "14.03.2016", username: "fsaina"))
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func onResponseSuccess(data: NSData) {
+        
+        hideSpinner()
+        
+    }
+    
+}
 
+extension PokemonDescriptionTableViewController: UITableViewDataSource{
+    
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return pokemonItemDescription.count
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellMember:PokemonDescriptionDataHolderProtocol = pokemonItemDescription[indexPath.section]
         
@@ -50,7 +75,7 @@ class PokemonDescriptionTableViewController: UITableViewController {
         case is PokemonDescriptionHolder:
             let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! PokemonDescrptionTableViewCell
             let cellElement = cellMember as! PokemonDescriptionHolder
-                
+            
             cell.nameLabel.text = cellElement.titleText
             cell.descriptionLabel.text = cellElement.descriptionText
             return cell
@@ -63,8 +88,78 @@ class PokemonDescriptionTableViewController: UITableViewController {
             cell.detailLabel.text = cellElement.descriptionText
             return cell
             
+        case is PokemonLikeDislikeHolder:
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! LikeDislikeTableViewCell
+            
+            cell.likeButton.addTarget(self, action: #selector(PokemonDescriptionTableViewController.likeButtonClick), forControlEvents: .TouchUpInside)
+            cell.dislikeButton.addTarget(self, action: #selector(PokemonDescriptionTableViewController.dislikeButtonClike), forControlEvents: .TouchUpInside)
+            
+            return cell
+            
+        case is PokemonCommentHolder:
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! CommentTableViewCell
+            let cellElement = cellMember as! PokemonCommentHolder
+            
+            cell.usernameLabel.text = cellElement.username
+            cell.commentLabel.text = cellElement.comment
+            cell.dateLabel.text = cellElement.date
+            
+            return cell
+            
+        case is PokemonImageViewHolder:
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! ImageTableViewCell
+            let cellElement = cellMember as! PokemonImageViewHolder
+            
+            
+            // Grab the image in its thread and load it here
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                
+                let urlImage:String = "https://pokeapi.infinum.co" + cellElement.url
+                let myImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:urlImage)!)!)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    cell.imageView?.image = myImage
+                    cell.setNeedsLayout()
+                }
+                
+            })
+            
+            return cell
         default:
-            return cellMember as! UITableViewCell
+            return tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier)! as UITableViewCell
         }
     }
+    
+    
+    func likeButtonClick(){
+        showSpinner()
+        let urlUpvote:String = "https://pokeapi.infinum.co/api/v1/pokemons/" + String(UserSingleton.sharedInstance.pokemonList[0].id)
+        + "/upvote"
+        let headers = [
+            "Authorization": "Token token=\(UserSingleton.sharedInstance.authToken), email=\(UserSingleton.sharedInstance.email)",
+            "Content-Type": "text/html"
+        ]
+        performRequest(.POST, apiUlr: urlUpvote, params: nil, headers: headers)
+    }
+    
+    func dislikeButtonClike(){
+        showSpinner()
+        let urlUpvote:String = "https://pokeapi.infinum.co/api/v1/pokemons/" + String(UserSingleton.sharedInstance.pokemonList[0].id)
+            + "/downvote"
+        let headers = [
+            "Authorization": "Token token=\(UserSingleton.sharedInstance.authToken), email=\(UserSingleton.sharedInstance.email)",
+            "Content-Type": "text/html"
+        ]
+        performRequest(.POST, apiUlr: urlUpvote, params:nil, headers: headers)
+    }
+    
+    
+}
+
+extension PokemonDescriptionTableViewController: UITableViewDelegate{
+    //what to do on click
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
 }
