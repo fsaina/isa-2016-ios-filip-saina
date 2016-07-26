@@ -26,7 +26,6 @@ class PokemonDescriptionTableViewController: BaseView{
         
         let pokemon:Pokemon = UserSingleton.sharedInstance.pokemonList[0]
         
-        
         if(pokemon.imageUrl != nil){
             pokemonItemDescription.append(PokemonImageViewHolder(url: pokemon.imageUrl!))
         }
@@ -34,9 +33,7 @@ class PokemonDescriptionTableViewController: BaseView{
         pokemonItemDescription.append(PokemonDescriptionHolder(title: pokemon.name,description: pokemon.description!))
         pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Height", description: String(pokemon.height)))
         pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Weight", description: String(pokemon.weight)))
-        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Abilities", description: "TODO"))
-        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Type", description: "TODO"))
-        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Gender", description: "TODO"))
+        pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Type", description: pokemon.type!))
         pokemonItemDescription.append(PokemonLikeDislikeHolder())
         pokemonItemDescription.append(PokemonCommentHolder(comment: "hue hue hue", date: "14.03.2016", username: "fsaina"))
         
