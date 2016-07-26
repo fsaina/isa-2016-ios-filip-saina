@@ -19,7 +19,6 @@ class PokemonDescriptionTableViewController: BaseView{
         super.viewDidLoad()
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 60
         
         tableView.sectionFooterHeight = 0
         tableView.sectionHeaderHeight = 0
@@ -35,7 +34,14 @@ class PokemonDescriptionTableViewController: BaseView{
         pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Weight", description: String(pokemon.weight)))
         pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Type", description: pokemon.type!))
         pokemonItemDescription.append(PokemonLikeDislikeHolder())
-        pokemonItemDescription.append(PokemonCommentHolder(comment: "hue hue hue", date: "14.03.2016", username: "fsaina"))
+        
+        for(var i = 0; i < pokemon.comments.data?.count; i += 1){
+            let comment:String = (pokemon.comments.data?[i].comment)!
+            let username:String = pokemon.comments.included![i].username
+            pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: username))
+        }
+        
+        
         
     }
     
@@ -87,7 +93,6 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
             
         case is PokemonLikeDislikeHolder:
             let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! LikeDislikeTableViewCell
-            
             cell.likeButton.addTarget(self, action: #selector(PokemonDescriptionTableViewController.likeButtonClick), forControlEvents: .TouchUpInside)
             cell.dislikeButton.addTarget(self, action: #selector(PokemonDescriptionTableViewController.dislikeButtonClike), forControlEvents: .TouchUpInside)
             

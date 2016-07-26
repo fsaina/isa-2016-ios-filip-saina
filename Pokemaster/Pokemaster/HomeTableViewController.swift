@@ -26,17 +26,9 @@ class HomeTableViewController: UITableViewController {
         
         let barBack = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeTableViewController.goBack))
         self.navigationItem.leftBarButtonItem = barBack
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func goBack() {
-        
-        
         
         let headers = [
             "Authorization": "Token token=\(UserSingleton.sharedInstance.authToken), email=\(UserSingleton.sharedInstance.email)",
@@ -160,8 +152,24 @@ class HomeTableViewController: UITableViewController {
         let cell = homeTableView.dequeueReusableCellWithIdentifier("pokemonCell") as! HomeTableViewCell!
         
         cell.pokemonNameLabel.text = self.pokeList[indexPath.section].name
-        // cell.pokemonImageView.image = ""  //TODO
         
+        if(self.pokeList[indexPath.section].imageUrl == nil){
+            return cell
+        }
+        
+        
+        // Grab the image in its thread and load it here
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            
+            let urlImage:String = "https://pokeapi.infinum.co" + self.pokeList[indexPath.section].imageUrl!
+            let myImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:urlImage)!)!)
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                cell.pokemonImageView.image = myImage
+                cell.setNeedsLayout()
+            }
+            
+        })
         
         return cell
     }
