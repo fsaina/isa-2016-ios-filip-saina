@@ -153,21 +153,31 @@ class HomeTableViewController: UITableViewController {
         
         cell.pokemonNameLabel.text = self.pokeList[indexPath.section].name
         
-        if(self.pokeList[indexPath.section].imageUrl == nil){
-            return cell
-        }
         
         
         // Grab the image in its thread and load it here
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
-            let urlImage:String = "https://pokeapi.infinum.co" + self.pokeList[indexPath.section].imageUrl!
-            let myImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:urlImage)!)!)
             
-            dispatch_async(dispatch_get_main_queue()) {
-                cell.pokemonImageView.image = myImage
-                cell.setNeedsLayout()
+            if((self.pokeList[indexPath.section].imageUrl) != nil){
+                let urlImage:String = "https://pokeapi.infinum.co" + self.pokeList[indexPath.section].imageUrl!
+                
+                print(urlImage) //debug
+                
+                let url = NSURL(string:urlImage)!
+            
+                if((NSData(contentsOfURL: url)) != nil){
+                    let data = NSData(contentsOfURL: url)
+                    let myImage =  UIImage(data: (data)!)
+                
+                
+                    dispatch_async(dispatch_get_main_queue()) {
+                        cell.pokemonImageView.image = myImage
+                        cell.setNeedsLayout()
+                    }
+                }
             }
+            
             
         })
         

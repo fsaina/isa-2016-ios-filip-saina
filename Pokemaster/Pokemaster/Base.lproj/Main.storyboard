@@ -497,7 +497,7 @@
                                             </constraints>
                                             <state key="normal" backgroundImage="dislike.png"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Dislike" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wef-XV-eZ4">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dislike" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wef-XV-eZ4">
                                             <rect key="frame" x="321" y="79" width="50" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="7Qo-aY-vKC"/>
@@ -507,7 +507,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf2-oo-wB7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf2-oo-wB7">
                                             <rect key="frame" x="226" y="79" width="31" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="31" id="0kt-Ye-Hgh"/>
@@ -521,12 +521,14 @@
                                     <constraints>
                                         <constraint firstItem="rf2-oo-wB7" firstAttribute="top" secondItem="o56-jk-aKX" secondAttribute="bottom" constant="6" id="6HI-U7-OCp"/>
                                         <constraint firstItem="rf2-oo-wB7" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="-10" id="AAm-dQ-hMw"/>
+                                        <constraint firstItem="wef-XV-eZ4" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="46" id="Cyx-4Y-Pn3"/>
                                         <constraint firstItem="o56-jk-aKX" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="-10" id="Mla-mK-R3u"/>
                                         <constraint firstItem="9dU-UQ-f8d" firstAttribute="top" secondItem="Y4m-z3-LCE" secondAttribute="topMargin" constant="9" id="Mo7-PX-cso"/>
                                         <constraint firstItem="o56-jk-aKX" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="-59" id="QCr-ed-IcJ"/>
                                         <constraint firstItem="o56-jk-aKX" firstAttribute="top" secondItem="Y4m-z3-LCE" secondAttribute="topMargin" constant="9" id="UIz-et-O8h"/>
                                         <constraint firstItem="rf2-oo-wB7" firstAttribute="top" secondItem="o56-jk-aKX" secondAttribute="bottom" constant="6" id="UaW-fx-uNj"/>
                                         <constraint firstItem="wef-XV-eZ4" firstAttribute="top" secondItem="9dU-UQ-f8d" secondAttribute="bottom" constant="6" id="eXU-g6-pjB"/>
+                                        <constraint firstItem="rf2-oo-wB7" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="-58" id="ero-g0-J20"/>
                                         <constraint firstItem="9dU-UQ-f8d" firstAttribute="centerX" secondItem="Y4m-z3-LCE" secondAttribute="centerX" constant="46" id="jo6-eT-uvp"/>
                                         <constraint firstItem="wef-XV-eZ4" firstAttribute="top" secondItem="9dU-UQ-f8d" secondAttribute="bottom" constant="6" id="uNe-5j-Wz7"/>
                                     </constraints>

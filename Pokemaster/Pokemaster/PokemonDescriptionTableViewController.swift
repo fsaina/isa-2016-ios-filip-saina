@@ -117,11 +117,18 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 
                 let urlImage:String = "https://pokeapi.infinum.co" + cellElement.url
-                let myImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:urlImage)!)!)
                 
-                dispatch_async(dispatch_get_main_queue()) {
-                    cell.imageView?.image = myImage
-                    cell.setNeedsLayout()
+                let url = NSURL(string:urlImage)!
+                
+                if((NSData(contentsOfURL: url)) != nil){
+                    let data = NSData(contentsOfURL: url)
+                    let myImage =  UIImage(data: (data)!)
+                    
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        cell.imageView?.image = myImage
+                        cell.setNeedsLayout()
+                    }
                 }
                 
             })
@@ -130,6 +137,16 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
         default:
             return tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier)! as UITableViewCell
         }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let cellMember:PokemonDescriptionDataHolderProtocol = pokemonItemDescription[indexPath.section]
+        if cellMember is PokemonLikeDislikeHolder{
+            return 100
+        }
+        
+        return tableView.rowHeight
     }
     
     
