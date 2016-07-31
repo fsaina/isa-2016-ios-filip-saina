@@ -98,4 +98,29 @@ extension CommentEntry: Unboxable{
 }
 
 
+struct Moves{
+    
+    let data:[Move]?
+    
+}
+
+extension Moves:Unboxable{
+    init(unboxer: Unboxer) {
+        self.data = unboxer.unbox("data")
+    }
+}
+
+struct Move {
+    
+    let id:String
+    let name:String
+    
+}
+
+extension Move:Unboxable{
+    init(unboxer: Unboxer) {
+        self.id = unboxer.unbox("id")
+        self.name = unboxer.unbox("attributes.name")
+    }
+}
 

@@ -77,7 +77,6 @@ class LoginViewController: BaseView{
                 return
         }
         
-        // Now onto networking
         let params = ["data" : [
             "type" : "session",
             "attributes": [

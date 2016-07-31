@@ -21,6 +21,7 @@
 		B56747AE1D4DEFE700689827 /* person_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B56747AD1D4DEFE700689827 /* person_placeholder.png */; };
 		B56747B11D4DF21000689827 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = B56747AF1D4DF21000689827 /* white.png */; };
 		B56747B21D4DF21000689827 /* document.png in Resources */ = {isa = PBXBuildFile; fileRef = B56747B01D4DF21000689827 /* document.png */; };
+		B56747B41D4E0D4500689827 /* SelecItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56747B31D4E0D4500689827 /* SelecItemTableViewController.swift */; };
 		B56F71CC1D2A6BE30031715C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F71CB1D2A6BE30031715C /* AppDelegate.swift */; };
 		B56F71D11D2A6BE30031715C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56F71CF1D2A6BE30031715C /* Main.storyboard */; };
 		B56F71D31D2A6BE30031715C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56F71D21D2A6BE30031715C /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 		B56747AD1D4DEFE700689827 /* person_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_placeholder.png; sourceTree = "<group>"; };
 		B56747AF1D4DF21000689827 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		B56747B01D4DF21000689827 /* document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = document.png; sourceTree = "<group>"; };
+		B56747B31D4E0D4500689827 /* SelecItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelecItemTableViewController.swift; sourceTree = "<group>"; };
 		B56F71C81D2A6BE30031715C /* Pokemaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokemaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56F71CB1D2A6BE30031715C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B56F71D01D2A6BE30031715C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				B550926F1D328B18008F90EE /* RegisterViewController.swift */,
 				B53CB3731D3EB196008C5274 /* HomeTableViewController.swift */,
 				B56747AB1D4DEC9D00689827 /* AddPokemonViewController.swift */,
+				B56747B31D4E0D4500689827 /* SelecItemTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				B56F71EC1D2A6CE30031715C /* LoginViewController.swift in Sources */,
 				B53CB3761D3EBF88008C5274 /* HomeTableViewCell.swift in Sources */,
 				B56747AC1D4DEC9D00689827 /* AddPokemonViewController.swift in Sources */,
+				B56747B41D4E0D4500689827 /* SelecItemTableViewController.swift in Sources */,
 				B5893F0F1D466AD7006D17E5 /* NetworkProtocol.swift in Sources */,
 				B53CB3741D3EB196008C5274 /* HomeTableViewController.swift in Sources */,
 				B55092701D328B18008F90EE /* RegisterViewController.swift in Sources */,
