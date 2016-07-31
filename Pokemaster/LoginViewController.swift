@@ -31,8 +31,8 @@ class LoginViewController: BaseView{
         super.viewDidLoad()
         self.passwordTextField.secureTextEntry = true
         
-        emailTextField.textFieldAsStandard("mail.png")
-        passwordTextField.textFieldAsStandard("lock.png")
+        emailTextField.textFieldAsStandard("mail.png", bootomBorder: true)
+        passwordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
         
     }
     

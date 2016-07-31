@@ -38,10 +38,10 @@ class RegisterViewController: BaseView {
     override func viewDidLoad() {
         
         // set images with every textfield
-        emailTextField.textFieldAsStandard("mail.png")
-        nicknameTextField.textFieldAsStandard("user.png")
-        passwordTextField.textFieldAsStandard("lock.png")
-        confirmPasswordTextField.textFieldAsStandard("lock.png")
+        emailTextField.textFieldAsStandard("mail.png", bootomBorder: true)
+        nicknameTextField.textFieldAsStandard("user.png", bootomBorder: true)
+        passwordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
+        confirmPasswordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
         
     
     }

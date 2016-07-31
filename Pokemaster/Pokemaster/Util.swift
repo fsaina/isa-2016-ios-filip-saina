@@ -5,17 +5,21 @@ import UIKit
 
 extension UITextField {
     
-    func textFieldAsStandard(imageString: String){
+    func textFieldAsStandard(imageString: String, bootomBorder: Bool){
+        
         let imageView = UIImageView();
         let image = UIImage(named: imageString);
         
         imageView.image = image;
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
-        imageView.frame = CGRect(x: 10, y: 10, width: image!.size.width + 25 , height: image!.size.height + 10)
+        imageView.frame = CGRect(x: 10, y: 10, width: 45 , height: 45)
+        
         self.leftView = imageView;
         self.leftViewMode = UITextFieldViewMode.Always
         
-        setBottomBorderTextField(image)
+        if bootomBorder{
+            setBottomBorderTextField(image)
+        }
         
     }
     

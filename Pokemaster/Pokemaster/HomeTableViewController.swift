@@ -26,7 +26,23 @@ class HomeTableViewController: UITableViewController {
         
         let barBack = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeTableViewController.goBack))
         self.navigationItem.leftBarButtonItem = barBack
+        
+        let buttonAdd: UIButton = UIButton(type: UIButtonType.ContactAdd)
+        buttonAdd.frame = CGRectMake(0, 0, 40, 40)
+//        buttonAdd.setImage(UIImage(named:"ImageName.png"), forState:UIControlState.Normal)
+        buttonAdd.addTarget(self, action: #selector(HomeTableViewController.addNewPokemonBarItem), forControlEvents:UIControlEvents.TouchUpInside)
+    
+        let addNewPokemonButton: UIBarButtonItem = UIBarButtonItem(customView: buttonAdd)
+        self.navigationItem.setRightBarButtonItem(addNewPokemonButton, animated: false)
+        self.tableView.rowHeight = 56
     }
+    
+    // method to execute on add new pokemon button click
+    func addNewPokemonBarItem(){
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("addPokemonView") as! AddPokemonViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func goBack() {
         
@@ -154,7 +170,6 @@ class HomeTableViewController: UITableViewController {
         cell.pokemonNameLabel.text = self.pokeList[indexPath.section].name
         
         
-        
         // Grab the image in its thread and load it here
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
@@ -173,6 +188,9 @@ class HomeTableViewController: UITableViewController {
                 
                     dispatch_async(dispatch_get_main_queue()) {
                         cell.pokemonImageView.image = myImage
+                        cell.pokemonImageView.layer.cornerRadius = 27
+                        cell.pokemonImageView.layer.borderWidth = 1
+                        cell.pokemonImageView.layer.borderColor = UIColor.grayColor().CGColor
                         cell.setNeedsLayout()
                     }
                 }
