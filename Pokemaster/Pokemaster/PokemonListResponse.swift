@@ -19,6 +19,16 @@ extension PokemonListResponse: Unboxable{
     }
 }
 
+struct PokemonCreateResponse{
+    let data:Pokemon
+}
+
+extension PokemonCreateResponse:Unboxable{
+    init(unboxer: Unboxer) {
+        self.data = unboxer.unbox("data")
+    }
+}
+
 struct Pokemon{
     
     let id: Int

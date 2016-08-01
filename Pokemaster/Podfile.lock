@@ -1,18 +1,21 @@
 PODS:
   - Alamofire (3.4.1)
   - MBProgressHUD (0.9.2)
+  - SwiftyJSON (2.3.2)
   - Unbox (1.8)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
   - MBProgressHUD (~> 0.9)
+  - SwiftyJSON
   - Unbox
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   Unbox: 6d65ec8ae5fcf35ba6850c8c6dff290b08465673
 
-PODFILE CHECKSUM: 4b03513a844facd3c7fd85111371ce3fba6b2d3c
+PODFILE CHECKSUM: 52ebcf5817019f6967bc44473fe88d466d2edd52
 
 COCOAPODS: 1.0.1

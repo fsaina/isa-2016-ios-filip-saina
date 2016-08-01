@@ -29,10 +29,6 @@ class RegisterViewController: BaseView {
 
     @IBOutlet weak var registerButton: UIButton!
 
-    override func viewWillDisappear(animated: Bool) {
-        //make the navigation controller white
-        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
-    }
     
     //Entry point of the view
     override func viewDidLoad() {
@@ -42,7 +38,7 @@ class RegisterViewController: BaseView {
         nicknameTextField.textFieldAsStandard("user.png", bootomBorder: true)
         passwordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
         confirmPasswordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
-        
+        self.navigationController!.navigationBar.barTintColor = UIColor(netHex:0x314E8F)
     
     }
     

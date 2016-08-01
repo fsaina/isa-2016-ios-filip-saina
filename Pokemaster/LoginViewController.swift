@@ -34,8 +34,13 @@ class LoginViewController: BaseView{
         emailTextField.textFieldAsStandard("mail.png", bootomBorder: true)
         passwordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
         
+        
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
+    }
     
     
     override func onResponseSuccess(data: NSData) {
@@ -104,5 +109,7 @@ extension UIViewController{
         MBProgressHUD.hideHUDForView(view, animated: true)
     }
     
+    
 }
+
 

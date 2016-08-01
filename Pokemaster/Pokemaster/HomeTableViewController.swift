@@ -11,7 +11,7 @@ import MBProgressHUD
 import Alamofire
 import Unbox
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController, newListItemDelegate {
     
 
     @IBOutlet weak var homeTableView: UITableView!
@@ -21,6 +21,7 @@ class HomeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.barTintColor = UIColor(netHex:0x314E8F)
 
         loadListDataFromServer()
         
@@ -35,11 +36,13 @@ class HomeTableViewController: UITableViewController {
         let addNewPokemonButton: UIBarButtonItem = UIBarButtonItem(customView: buttonAdd)
         self.navigationItem.setRightBarButtonItem(addNewPokemonButton, animated: false)
         self.tableView.rowHeight = 56
+        navigationItem.title = "Pokemaster"
     }
     
     // method to execute on add new pokemon button click
     func addNewPokemonBarItem(){
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("addPokemonView") as! AddPokemonViewController
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -65,16 +68,13 @@ class HomeTableViewController: UITableViewController {
                     if let data = response.data {
                         print("Error data: \(error.localizedDescription))")
                         do{
-                            
                             let errorObject: ErrorMessage = try Unbox(data)
-                            
                             
                             self.createAlertController(
                                 "Error with the \(errorObject.errorSubject()) field",
                                 message: "\(errorObject.errorMessageDetail)")
                             
                         } catch _ {
-                            
                             
                             self.createAlertController(
                                 "Error parsing the error data",
@@ -209,8 +209,17 @@ class HomeTableViewController: UITableViewController {
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("pokemonDetailViewController") as! PokemonDescriptionTableViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func addANewItem(item:Pokemon){
+        self.pokeList.append(item)
+        tableView.reloadData()
+    }
 
 }
 
+
+protocol newListItemDelegate {
+    func addANewItem(item:Pokemon)
+}
 
 

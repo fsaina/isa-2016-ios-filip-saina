@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Unbox
+import SwiftyJSON
 
 class AddPokemonViewController: BaseView, UINavigationControllerDelegate, UIImagePickerControllerDelegate, DidSelectItemDelegate  {
     
@@ -21,6 +22,8 @@ class AddPokemonViewController: BaseView, UINavigationControllerDelegate, UIImag
     @IBOutlet weak var heightField: UITextField!
     
     @IBOutlet weak var weightField: UITextField!
+    
+    @IBOutlet weak var typebutton: UIButton!
     
     @IBOutlet weak var abilitiesButton: UIButton!
     
@@ -36,6 +39,8 @@ class AddPokemonViewController: BaseView, UINavigationControllerDelegate, UIImag
     
     var imagePicker = UIImagePickerController()
     
+    var delegate: newListItemDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +48,7 @@ class AddPokemonViewController: BaseView, UINavigationControllerDelegate, UIImag
         heightField.textFieldAsStandard("", bootomBorder: false)
         weightField.textFieldAsStandard("", bootomBorder: false)
         DescriptionField.textFieldAsStandard("document.png", bootomBorder: false)
+        navigationItem.title = "Add new pokemon"
         
         loadImageButton.layer.cornerRadius = 24
 
@@ -95,25 +101,98 @@ class AddPokemonViewController: BaseView, UINavigationControllerDelegate, UIImag
     }
     
     @IBAction func saveButtonPress(sender: AnyObject) {
-//        guard let username = emailTextField?.text where username.characters.count > 0,
-//            let password = passwordTextField?.text where password.characters.count > 0 else{
-//                
-//                createAlertController(
-//                    "Mew is not pleased!",
-//                    message: "Please enter a valid username and password")
-//                
-//                return
-//        }
-//        
-//        let params = ["data" : [
-//            "type" : "session",
-//            "attributes": [
-//                "email": username,
-//                "password": password
-//            ]]]
-//        
-//        showSpinner()
-//        performRequest(.POST, apiUlr: "https://pokeapi.infinum.co/api/v1/users/login", params: params, headers: nil)
+        
+        guard let name = nameField?.text where nameField.text!.characters.count > 0,
+            let username = heightField?.text where username.characters.count > 0,
+            let password = weightField?.text where password.characters.count > 0,
+            let passwordConfirm = DescriptionField?.text where passwordConfirm.characters.count > 0 else{
+                
+                if(self.pokemonTypesList.count == 0 || self.pokemonMovesList.count == 0){
+                 
+                    createAlertController(
+                        "Error",
+                        message: "Not all fields are fulfilled")
+                    
+                }
+                
+            return
+                
+        }
+        
+        var types:[String] = []
+        for i in self.pokemonTypesList{
+            types.append(i.idValue)
+        }
+        
+        var moves:[String] = []
+        for i in self.pokemonMovesList{
+            moves.append(i.idValue)
+        }
+        
+        let paramsJSON = JSON(types)
+        let typesFin = paramsJSON.rawString(NSUTF8StringEncoding)
+        
+        let paramsJSON2 = JSON(moves)
+        let movesFin = paramsJSON2.rawString(NSUTF8StringEncoding)
+        
+        // TODO add moves, types to the list below!
+        let attributes:[String:AnyObject] = [
+            "name" : nameField.text!,
+            "height" : heightField.text!,
+            "weight" : weightField.text!,
+            "order" : "36",
+            "gender_id": "1",
+            "is_default": "true",
+            "base_experience": "20",
+            "type_ids": typesFin!,
+            "move_ids": movesFin!,
+            "description": DescriptionField.text!
+        ]
+        
+        let headers = [
+            "Authorization": "Token token=\(UserSingleton.sharedInstance.authToken), email=\(UserSingleton.sharedInstance.email)",
+            "Content-Type": "text/html"
+        ]
+        
+        
+        Alamofire.upload(.POST, "https://pokeapi.infinum.co/api/v1/pokemons", headers: headers, multipartFormData: {
+            multipartFormData in
+            if let image = self.imageView.image {
+                if let imageData = UIImageJPEGRepresentation(image, 0.8) {
+                    multipartFormData.appendBodyPart(data: imageData, name: "data[attributes][image]", fileName: "file.jpeg", mimeType: "image/jpeg")
+                }
+            }
+            for (key, value) in attributes {
+                multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: "data[attributes][" + key + "]")
+            }
+            }, encodingCompletion: {
+                encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    
+                    upload.responseString(completionHandler: { (response) in
+                    if let data = response.data {
+                        do{
+                        let stringdata = String(data: data, encoding: NSUTF8StringEncoding)
+                        print(stringdata!)
+                        let pokemon: PokemonCreateResponse = try Unbox(data)
+                        self.delegate?.addANewItem(pokemon.data)
+                        } catch _ {
+                            self.createAlertController(
+                                "Error",
+                                message: "Sorry, there was an error creating while parsing a new pokemon")
+
+                        }
+                    }
+                    })
+                    self.navigationController!.popViewControllerAnimated(true)
+                case .Failure(let encodingError):
+                    self.createAlertController(
+                        "Error",
+                        message: "Sorry, there was an error creating a new pokemon")
+                }
+        })
+        
     }
     
     

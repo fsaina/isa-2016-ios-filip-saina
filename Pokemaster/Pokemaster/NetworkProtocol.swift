@@ -121,9 +121,18 @@ class BaseView:UIViewController, NetworkableProtocol, AlertableProtocol{
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.navigationController!.navigationBar.barTintColor = UIColor(netHex:0x314E8F)
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+       
     }
+    
+    
     
     func createAlertController(title: String, message: String) {
         let alert = UIAlertController(title: title,

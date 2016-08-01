@@ -13,6 +13,7 @@ class PokemonDescriptionTableViewController: BaseView{
     @IBOutlet var tableView: UITableView!
     
     
+    
     private var pokemonItemDescription:[PokemonDescriptionDataHolderProtocol] = []
     
     override func viewDidLoad() {
@@ -42,7 +43,7 @@ class PokemonDescriptionTableViewController: BaseView{
         }
         
         
-        
+        navigationItem.title = pokemon.name
     }
     
     override func didReceiveMemoryWarning() {
