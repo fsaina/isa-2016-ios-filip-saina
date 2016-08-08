@@ -81,16 +81,7 @@ class AddPokemonViewController: BaseView, UINavigationControllerDelegate, UIImag
         
         do {
             
-//            let user: User = try Unbox(data)
-//            
-//            //set the singleton class variables
-//            UserSingleton.sharedInstance.authToken = user.authToken
-//            UserSingleton.sharedInstance.email = user.email
-//            UserSingleton.sharedInstance.username = user.username
-//            self.hideSpinner()
-//            
-//            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController")   as! HomeTableViewController
-//            self.navigationController?.pushViewController(vc, animated: true)
+            //do nothing
             
         } catch _ {
             
