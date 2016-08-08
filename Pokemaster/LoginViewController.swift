@@ -34,7 +34,26 @@ class LoginViewController: BaseView{
         emailTextField.textFieldAsStandard("mail.png", bootomBorder: true)
         passwordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
         
+        checkIfValidLogin()
+    }
+    
+    //test the registered data if there is a valid entry
+    func checkIfValidLogin(){
+        let defaults = NSUserDefaults.standardUserDefaults()
         
+        if let valid:Bool = defaults.boolForKey("isEntered"){
+            
+            if valid {
+         
+                UserSingleton.sharedInstance.username = defaults.stringForKey("username")!
+                UserSingleton.sharedInstance.email = defaults.stringForKey("email")!
+                UserSingleton.sharedInstance.authToken = defaults.stringForKey("authToken")!
+            
+                //show the list
+                showHomeController()
+                
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -57,8 +76,7 @@ class LoginViewController: BaseView{
             UserSingleton.sharedInstance.username = user.username
             self.hideSpinner()
             
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController")   as! HomeTableViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            showHomeController()
             
         } catch _ {
             
@@ -66,6 +84,11 @@ class LoginViewController: BaseView{
             
         }
         
+    }
+    
+    func showHomeController() {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController")   as! HomeTableViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
