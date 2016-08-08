@@ -16,6 +16,7 @@ import Unbox
  * handling the login process.
  */
 class LoginViewController: BaseView{
+    @IBOutlet weak var pokeballImage: UIImageView!
     
     // refference to the email text field
     @IBOutlet weak var emailTextField: UITextField!
@@ -35,6 +36,11 @@ class LoginViewController: BaseView{
         passwordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
         
         checkIfValidLogin()
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.performAnimation()
+            
+        })
     }
     
     //test the registered data if there is a valid entry
@@ -53,6 +59,15 @@ class LoginViewController: BaseView{
                 showHomeController()
                 
             }
+        }
+    }
+    
+    func performAnimation() {
+        
+        UIView.animateWithDuration(0.5, delay: 0, options: .CurveLinear, animations: { () -> Void in
+            self.pokeballImage.transform = CGAffineTransformRotate(self.pokeballImage.transform, CGFloat(0).advancedBy(0.2))
+        }) { (finished) -> Void in
+            self.performAnimation()
         }
     }
     
