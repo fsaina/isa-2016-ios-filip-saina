@@ -113,6 +113,9 @@ class LoginViewController: BaseView{
         guard let username = emailTextField?.text where username.characters.count > 0,
             let password = passwordTextField?.text where password.characters.count > 0 else{
                 
+                animateTextFieldView(emailTextField)
+                animateTextFieldView(passwordTextField)
+                
                 createAlertController(
                     "Mew is not pleased!",
                     message: "Please enter a valid username and password")

@@ -12,8 +12,6 @@ class PokemonDescriptionTableViewController: BaseView{
     
     @IBOutlet var tableView: UITableView!
     
-    
-    
     private var pokemonItemDescription:[PokemonDescriptionDataHolderProtocol] = []
     
     override func viewDidLoad() {
@@ -151,7 +149,9 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
     }
     
     
-    func likeButtonClick(){
+    
+    
+    func likeButtonClick(button:UIButton){
         showSpinner()
         let urlUpvote:String = "https://pokeapi.infinum.co/api/v1/pokemons/" + String(UserSingleton.sharedInstance.pokemonList[0].id)
         + "/upvote"
@@ -162,7 +162,8 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
         performRequest(.POST, apiUlr: urlUpvote, params: nil, headers: headers)
     }
     
-    func dislikeButtonClike(){
+    func dislikeButtonClike(button:UIButton){
+        
         showSpinner()
         let urlUpvote:String = "https://pokeapi.infinum.co/api/v1/pokemons/" + String(UserSingleton.sharedInstance.pokemonList[0].id)
             + "/downvote"
