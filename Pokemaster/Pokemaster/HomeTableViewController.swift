@@ -188,9 +188,10 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                 
                     dispatch_async(dispatch_get_main_queue()) {
                         cell.pokemonImageView.image = myImage
-                        cell.pokemonImageView.layer.cornerRadius = 27
+                        cell.pokemonImageView.layer.cornerRadius = cell.pokemonImageView.frame.size.width/2
                         cell.pokemonImageView.layer.borderWidth = 1
                         cell.pokemonImageView.layer.borderColor = UIColor.grayColor().CGColor
+                        cell.pokemonImageView.layer.masksToBounds = true
                         cell.setNeedsLayout()
                     }
                 }
