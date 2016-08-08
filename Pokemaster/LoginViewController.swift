@@ -31,11 +31,16 @@ class LoginViewController: BaseView{
         super.viewDidLoad()
         self.passwordTextField.secureTextEntry = true
         
-        emailTextField.textFieldAsStandard("mail.png")
-        passwordTextField.textFieldAsStandard("lock.png")
+        emailTextField.textFieldAsStandard("mail.png", bootomBorder: true)
+        passwordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
+        
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
+    }
     
     
     override func onResponseSuccess(data: NSData) {
@@ -77,7 +82,6 @@ class LoginViewController: BaseView{
                 return
         }
         
-        // Now onto networking
         let params = ["data" : [
             "type" : "session",
             "attributes": [
@@ -105,5 +109,7 @@ extension UIViewController{
         MBProgressHUD.hideHUDForView(view, animated: true)
     }
     
+    
 }
+
 

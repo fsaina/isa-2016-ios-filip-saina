@@ -29,20 +29,16 @@ class RegisterViewController: BaseView {
 
     @IBOutlet weak var registerButton: UIButton!
 
-    override func viewWillDisappear(animated: Bool) {
-        //make the navigation controller white
-        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
-    }
     
     //Entry point of the view
     override func viewDidLoad() {
         
         // set images with every textfield
-        emailTextField.textFieldAsStandard("mail.png")
-        nicknameTextField.textFieldAsStandard("user.png")
-        passwordTextField.textFieldAsStandard("lock.png")
-        confirmPasswordTextField.textFieldAsStandard("lock.png")
-        
+        emailTextField.textFieldAsStandard("mail.png", bootomBorder: true)
+        nicknameTextField.textFieldAsStandard("user.png", bootomBorder: true)
+        passwordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
+        confirmPasswordTextField.textFieldAsStandard("lock.png", bootomBorder: true)
+        self.navigationController!.navigationBar.barTintColor = UIColor(netHex:0x314E8F)
     
     }
     

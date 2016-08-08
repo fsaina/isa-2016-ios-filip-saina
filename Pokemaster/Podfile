@@ -8,6 +8,7 @@ target 'Pokemaster' do
   pod 'MBProgressHUD', '~> 0.9'
   pod 'Alamofire', '~> 3.4'
   pod "Unbox"
+  pod 'SwiftyJSON'
 
   target 'PokemasterUITests' do
     inherit! :search_paths
