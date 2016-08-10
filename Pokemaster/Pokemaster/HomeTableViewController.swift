@@ -30,7 +30,6 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
         
         let buttonAdd: UIButton = UIButton(type: UIButtonType.ContactAdd)
         buttonAdd.frame = CGRectMake(0, 0, 40, 40)
-//        buttonAdd.setImage(UIImage(named:"ImageName.png"), forState:UIControlState.Normal)
         buttonAdd.addTarget(self, action: #selector(HomeTableViewController.addNewPokemonBarItem), forControlEvents:UIControlEvents.TouchUpInside)
     
         let addNewPokemonButton: UIBarButtonItem = UIBarButtonItem(customView: buttonAdd)
@@ -40,11 +39,20 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
         
         //set valid login user
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setBool(true, forKey: "isEntered")
+        defaults.setBool(true, forKey: "isEnvared")
         defaults.setObject(UserSingleton.sharedInstance.username, forKey: "username")
         defaults.setObject(UserSingleton.sharedInstance.email, forKey: "email")
         defaults.setObject(UserSingleton.sharedInstance.authToken, forKey: "authToken")
         
+        //set the refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl!.addTarget(self, action: #selector(HomeTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+    }
+    
+    func refresh(sender:AnyObject) {
+        loadListDataFromServer()
     }
     
     // method to execute on add new pokemon button click
@@ -88,7 +96,7 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                         } catch _ {
                             
                             self.createAlertController(
-                                "Error parsing the error data",
+                                "Error parsing the data",
                                 message: "An error occured while parsing the error data -- please try again later")
                         }
                     } else {
@@ -129,6 +137,10 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                             self.pokeList = listResponse.data
                             self.tableView.reloadData()
                             self.hideSpinner()
+                            
+                            if self.refreshControl!.refreshing{
+                                self.refreshControl!.endRefreshing()
+                            }
                         
                         } catch _ {
 
@@ -142,7 +154,7 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                             message: "An error occured while parsing the data -- please try again later")
                     }
                     
-                case .Failure(let error):
+                case .Failure(_):
                     self.createAlertController(
                         "Error parsing the data",
                         message: "An error occured while parsing the data -- please try again later")
@@ -181,15 +193,22 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
         cell.pokemonNameLabel.text = self.pokeList[indexPath.section].name
         
         
+        if(self.pokeList[indexPath.section].image != nil){
+            
+            cell.pokemonImageView.image = self.pokeList[indexPath.section].image
+            cell.pokemonImageView.layer.cornerRadius = cell.pokemonImageView.frame.size.width/2
+            cell.pokemonImageView.layer.borderWidth = 1
+            cell.pokemonImageView.layer.borderColor = UIColor.grayColor().CGColor
+            cell.pokemonImageView.layer.masksToBounds = true
+            cell.setNeedsLayout()
+            
+        } else {
         // Grab the image in its thread and load it here
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
             
             if((self.pokeList[indexPath.section].imageUrl) != nil){
                 let urlImage:String = "https://pokeapi.infinum.co" + self.pokeList[indexPath.section].imageUrl!
-                
-                print(urlImage) //debug
-                
                 let url = NSURL(string:urlImage)!
             
                 if((NSData(contentsOfURL: url)) != nil){
@@ -199,6 +218,7 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                 
                     dispatch_async(dispatch_get_main_queue()) {
                         cell.pokemonImageView.image = myImage
+                        self.pokeList[indexPath.section].image = myImage
                         cell.pokemonImageView.layer.cornerRadius = cell.pokemonImageView.frame.size.width/2
                         cell.pokemonImageView.layer.borderWidth = 1
                         cell.pokemonImageView.layer.borderColor = UIColor.grayColor().CGColor
@@ -210,6 +230,7 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
             
             
         })
+        }
         
         return cell
     }
@@ -223,12 +244,11 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
     }
     
     func addANewItem(item:Pokemon){
-        self.pokeList.append(item)
+        self.pokeList.insert(item, atIndex: 0)
         tableView.reloadData()
     }
 
 }
-
 
 protocol newListItemDelegate {
     func addANewItem(item:Pokemon)

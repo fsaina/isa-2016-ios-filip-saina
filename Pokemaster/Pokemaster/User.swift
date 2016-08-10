@@ -8,7 +8,7 @@ import Unbox
 struct User: Unboxable {
     
     // authorization token returned by the server
-    let authToken: String
+    let authToken: String?
     
     // email of the user
     let email: String

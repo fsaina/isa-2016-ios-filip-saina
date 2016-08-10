@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Alamofire
+import Unbox
 
-class PokemonDescriptionTableViewController: BaseView{
+class PokemonDescriptionTableViewController: BaseView, CommentAddedDelegate{
     
     @IBOutlet var tableView: UITableView!
     
@@ -34,12 +36,57 @@ class PokemonDescriptionTableViewController: BaseView{
         pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Type", description: pokemon.type!))
         pokemonItemDescription.append(PokemonLikeDislikeHolder())
         
-        for(var i = 0; i < pokemon.comments.data?.count; i += 1){
-            let comment:String = (pokemon.comments.data?[i].comment)!
-            let username:String = pokemon.comments.included![i].username
-            pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: username))
+        for comm in pokemon.comments.data!{
+            let comment:String = comm.comment
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                
+                let headers = [
+                    "Authorization": "Token token=\(UserSingleton.sharedInstance.authToken), email=\(UserSingleton.sharedInstance.email)",
+                    "Accept": "application/json"
+                ]
+                
+                Alamofire.request(.GET, "https://pokeapi.infinum.co/api/v1/users/"+String(comm.authorId),headers:headers, encoding: .JSON)
+                    .validate()
+                    .responseJSON { response in
+                        switch response.result {
+                        case .Success:
+                            
+                            if let data = response.data {
+                                do{
+                                    let user: User = try Unbox(data)
+                                    
+                                    dispatch_async(dispatch_get_main_queue()) {
+                                        self.pokemonItemDescription.insert(PokemonCommentHolder(comment: comment, date: "", username: user.username), atIndex:self.pokemonItemDescription.count-1)
+                                        self.tableView.reloadData()
+                                    }
+                                    
+                                } catch _ {
+                                    
+                                    self.createAlertController(
+                                        "Exception while parsing the data",
+                                        message: "An error occured while parsing the data -- please try again later")
+                                }
+                            } else {
+                                self.createAlertController(
+                                    "Error getting the data",
+                                    message: "An error occured while parsing the data -- please try again later")
+                            }
+                            
+                        case .Failure(_):
+                            self.createAlertController(
+                                "Error parsing the data",
+                                message: "An error occured while parsing the data -- please try again later")
+                        }
+                }
+
+                
+                
+                
+            })
+            
+            
         }
-        
+        pokemonItemDescription.append(PokemonAddCommendHolder())
         
         navigationItem.title = pokemon.name
     }
@@ -107,6 +154,13 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
             
             return cell
             
+        case is PokemonAddCommendHolder:
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! AddCommentTableViewCell
+            
+            cell.addCommentButton.addTarget(self, action: #selector(PokemonDescriptionTableViewController.addCommentClick), forControlEvents: .TouchUpInside)
+            
+            return cell
+            
         case is PokemonImageViewHolder:
             let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! ImageTableViewCell
             let cellElement = cellMember as! PokemonImageViewHolder
@@ -126,7 +180,10 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         cell.imageView?.image = myImage
+                        
                         cell.setNeedsLayout()
+                        
+                        cell.imageView?.contentMode = .ScaleAspectFit
                     }
                 }
                 
@@ -141,15 +198,20 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         let cellMember:PokemonDescriptionDataHolderProtocol = pokemonItemDescription[indexPath.section]
-        if cellMember is PokemonLikeDislikeHolder{
-            return 100
-        }
-        
-        return tableView.rowHeight
+        return CGFloat(cellMember.cellHeight)
     }
     
+    func addCommentClick(button:UIButton){
     
-    
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("popup") as! AddCommentViewController
+        vc.modalPresentationStyle = .OverCurrentContext
+        
+        vc.delegate = self
+        navigationController?.presentViewController(vc, animated: true, completion: {
+            
+        })
+        
+    }
     
     func likeButtonClick(button:UIButton){
         showSpinner()
@@ -174,6 +236,10 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
         performRequest(.POST, apiUlr: urlUpvote, params:nil, headers: headers)
     }
     
+    func commentAdded(comment: String) {
+        self.pokemonItemDescription.insert(PokemonCommentHolder(comment: comment, date: "", username: UserSingleton.sharedInstance.username), atIndex:self.pokemonItemDescription.count-1)
+        tableView.reloadData()
+    }
     
 }
 
@@ -183,4 +249,8 @@ extension PokemonDescriptionTableViewController: UITableViewDelegate{
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+}
+
+protocol CommentAddedDelegate {
+    func commentAdded(name: String)
 }

@@ -38,7 +38,8 @@ struct Pokemon{
     var description: String?
     let height:Int
     let weight:Int
-    let comments:Comments
+    var comments:Comments
+    var image:UIImage?
 }
 
 extension Pokemon: Unboxable{
@@ -52,6 +53,7 @@ extension Pokemon: Unboxable{
         self.height = unboxer.unbox("attributes.height")
         self.weight = unboxer.unbox("attributes.weight")
         self.comments = unboxer.unbox("relationships.comments")
+        self.image = nil
         
         if(self.description == nil){
             self.description = ""
@@ -68,14 +70,14 @@ extension Pokemon: Unboxable{
 //might work -- might not
 
 struct Comments{
-    let data:[CommentEntry]?
-    let included:[Included]?
+    var data:[CommentEntry]?
+//    let included:[Included]?
 }
 
 extension Comments:Unboxable{
     init(unboxer: Unboxer) {
         self.data = unboxer.unbox("data")
-        self.included = unboxer.unbox("included")
+//        self.included = unboxer.unbox("included")
     }
 }
 
@@ -102,8 +104,8 @@ struct CommentEntry{
 extension CommentEntry: Unboxable{
     init(unboxer: Unboxer) {
         self.id = unboxer.unbox("id")
-        self.comment = unboxer.unbox("attributes.content")
-        self.authorId = unboxer.unbox("relationships.author.data.id")
+        self.comment = unboxer.unbox("content")
+        self.authorId = unboxer.unbox("author-id")
     }
 }
 
