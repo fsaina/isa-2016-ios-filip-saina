@@ -37,6 +37,14 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
         self.navigationItem.setRightBarButtonItem(addNewPokemonButton, animated: false)
         self.tableView.rowHeight = 56
         navigationItem.title = "Pokemaster"
+        
+        //set valid login user
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(true, forKey: "isEntered")
+        defaults.setObject(UserSingleton.sharedInstance.username, forKey: "username")
+        defaults.setObject(UserSingleton.sharedInstance.email, forKey: "email")
+        defaults.setObject(UserSingleton.sharedInstance.authToken, forKey: "authToken")
+        
     }
     
     // method to execute on add new pokemon button click
@@ -62,7 +70,10 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                 switch response.result {
                 case .Success:
                     
-                   self.navigationController?.popToRootViewControllerAnimated(true)
+                    //remove login data
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    defaults.setBool(false, forKey: "isEntered")
+                    self.navigationController?.popToRootViewControllerAnimated(true)
                     
                 case .Failure(let error):
                     if let data = response.data {

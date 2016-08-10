@@ -64,13 +64,17 @@ class RegisterViewController: BaseView {
         }
     }
 
-
     @IBAction func registerButtonPressed(sender: AnyObject) {
         
         guard let email = emailTextField?.text where email.characters.count > 0,
             let username = nicknameTextField?.text where username.characters.count > 0,
             let password = passwordTextField?.text where password.characters.count > 0,
             let passwordConfirm = confirmPasswordTextField?.text where passwordConfirm.characters.count > 0 else{
+                
+                animateTextFieldView(nicknameTextField)
+                animateTextFieldView(emailTextField)
+                animateTextFieldView(passwordTextField)
+                animateTextFieldView(confirmPasswordTextField)
                 
                 createAlertController(
                     "Hej newbie!",

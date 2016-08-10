@@ -140,6 +140,7 @@
                         <outlet property="emailTextField" destination="a2Y-vI-kSz" id="s2W-MZ-Rte"/>
                         <outlet property="loginButton" destination="RfA-Vh-lBh" id="c4Z-ji-xWH"/>
                         <outlet property="passwordTextField" destination="cod-Ks-7gA" id="WOe-DG-MgX"/>
+                        <outlet property="pokeballImage" destination="9r7-zf-toz" id="pss-Aa-LU7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

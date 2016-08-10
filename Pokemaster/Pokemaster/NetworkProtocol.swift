@@ -174,6 +174,18 @@ class BaseView:UIViewController, NetworkableProtocol, AlertableProtocol{
             "Error with the \(errorObject.errorSubject()) field",
             message: "\(errorObject.errorMessageDetail)")
     }
+    
+    func animateTextFieldView(imageView:UITextField){
+        
+        let coffeeShakeAnimation = CABasicAnimation(keyPath: "position")
+        coffeeShakeAnimation.duration = 0.11
+        coffeeShakeAnimation.repeatCount = 2
+        coffeeShakeAnimation.autoreverses = true
+        coffeeShakeAnimation.fromValue = NSValue(CGPoint: CGPointMake(imageView.center.x - 10, imageView.center.y))
+        coffeeShakeAnimation.toValue = NSValue(CGPoint: CGPointMake(imageView.center.x + 10, imageView.center.y))
+        imageView.layer.addAnimation(coffeeShakeAnimation, forKey: "position")
+        
+    }
 }
 
 extension UIColor {
