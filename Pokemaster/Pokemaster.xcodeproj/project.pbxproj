@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8CC30E95EDBA1D780A5AA18F /* Pods_Pokemaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ABB81C48BD103BDB42B904 /* Pods_Pokemaster.framework */; };
 		B51906511D40D9FE0066344E /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51906501D40D9FE0066344E /* ErrorMessage.swift */; };
+		B53C11F01D5BBABF0025E124 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C11EF1D5BBABF0025E124 /* AddCommentViewController.swift */; };
 		B53CB35F1D3D119B008C5274 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53CB35E1D3D119B008C5274 /* Util.swift */; };
 		B53CB3611D3D1CB3008C5274 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = B53CB3601D3D1CB3008C5274 /* user.png */; };
 		B53CB3631D3D23BB008C5274 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53CB3621D3D23BB008C5274 /* User.swift */; };
@@ -54,6 +55,7 @@
 		8064D0EA4F0760FC61DAE1B9 /* Pods-PokemasterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemasterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokemasterUITests/Pods-PokemasterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		82D84B0BF6FC789D65BF80DF /* Pods-Pokemaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pokemaster/Pods-Pokemaster.release.xcconfig"; sourceTree = "<group>"; };
 		B51906501D40D9FE0066344E /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		B53C11EF1D5BBABF0025E124 /* AddCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		B53CB35E1D3D119B008C5274 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		B53CB3601D3D1CB3008C5274 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		B53CB3621D3D23BB008C5274 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				B53CB3731D3EB196008C5274 /* HomeTableViewController.swift */,
 				B56747AB1D4DEC9D00689827 /* AddPokemonViewController.swift */,
 				B56747B31D4E0D4500689827 /* SelecItemTableViewController.swift */,
+				B53C11EF1D5BBABF0025E124 /* AddCommentViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				B51906511D40D9FE0066344E /* ErrorMessage.swift in Sources */,
 				B5893F091D4609F2006D17E5 /* TableViewDataHolders.swift in Sources */,
 				B5893F0B1D460C8A006D17E5 /* TableViewCells.swift in Sources */,
+				B53C11F01D5BBABF0025E124 /* AddCommentViewController.swift in Sources */,
 				B5ACBAAB1D429F1900868AE9 /* PokemonListResponse.swift in Sources */,
 				B5893F071D46097A006D17E5 /* PokemonDescriptionTableViewController.swift in Sources */,
 				B56F71EC1D2A6CE30031715C /* LoginViewController.swift in Sources */,

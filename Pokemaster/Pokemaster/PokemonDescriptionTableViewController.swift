@@ -159,7 +159,11 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
     
     func addCommentClick(button:UIButton){
     
-        print("click")
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("popup")
+        vc?.modalPresentationStyle = .OverCurrentContext
+        navigationController?.presentViewController(vc!, animated: true, completion: {
+            
+        })
         
     }
     

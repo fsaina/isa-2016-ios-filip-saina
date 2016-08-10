@@ -645,12 +645,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="101"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBR-Vj-LCK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="101"/>
-                                            <state key="normal" title="Add a comment"/>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBR-Vj-LCK">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="130" id="7uZ-9s-t1D"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <state key="normal" title="Add a comment">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="7uZ-9s-t1D"/>
+                                                </mask>
+                                            </variation>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.48553865259565876" green="0.61420570798522167" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.14901960784313725" green="0.41568627450980394" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="SBR-Vj-LCK" secondAttribute="trailing" id="DoW-es-4Pp"/>
+                                        <constraint firstItem="SBR-Vj-LCK" firstAttribute="leading" secondItem="FAB-eO-F90" secondAttribute="leading" id="KhX-Dz-dn0"/>
+                                        <constraint firstAttribute="bottom" secondItem="SBR-Vj-LCK" secondAttribute="bottom" id="RqD-I6-3Zg"/>
+                                        <constraint firstItem="SBR-Vj-LCK" firstAttribute="top" secondItem="FAB-eO-F90" secondAttribute="top" id="wZ9-PM-dX5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addCommentButton" destination="SBR-Vj-LCK" id="6vW-rf-RaV"/>
@@ -669,6 +686,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huE-ZM-LrX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1811" y="1211"/>
+        </scene>
+        <!--Add Comment View Controller-->
+        <scene sceneID="iHp-Nf-jUT">
+            <objects>
+                <viewController storyboardIdentifier="popup" id="J6K-mn-hAh" customClass="AddCommentViewController" customModule="Pokemaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kS2-1s-PsQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="jdD-OG-hav"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uc0-Pa-Q3v">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kv-6a-Gph">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjn-dK-KAM">
+                                <rect key="frame" x="150" y="190" width="300" height="220"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="This pokemon is really bitc'in" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jXz-u8-ZOz">
+                                        <rect key="frame" x="8" y="37" width="284" height="130"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="G1D-pY-t1e"/>
+                                            <constraint firstAttribute="width" constant="284" id="jhQ-IF-K74"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="G1D-pY-t1e"/>
+                                                <exclude reference="jhQ-IF-K74"/>
+                                            </mask>
+                                        </variation>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCk-dy-NRH">
+                                        <rect key="frame" x="0.0" y="175" width="300" height="45"/>
+                                        <color key="backgroundColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="bln-TS-7XB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Add comment">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissPopup" destination="J6K-mn-hAh" eventType="touchUpInside" id="wmP-Vx-ERZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write your comment here:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjA-HK-yLt">
+                                        <rect key="frame" x="8" y="8" width="284" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="88U-8b-auM"/>
+                                            <constraint firstAttribute="height" constant="21" id="Opn-bH-uab"/>
+                                            <constraint firstAttribute="width" constant="284" id="vVI-vS-BL7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.14509803921568629" green="0.41176470588235292" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="88U-8b-auM"/>
+                                                <exclude reference="vVI-vS-BL7"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="XCk-dy-NRH" firstAttribute="leading" secondItem="gjn-dK-KAM" secondAttribute="leading" id="CqT-Lj-XGB"/>
+                                    <constraint firstItem="bjA-HK-yLt" firstAttribute="leading" secondItem="gjn-dK-KAM" secondAttribute="leading" constant="8" id="FNx-mR-m3q"/>
+                                    <constraint firstItem="XCk-dy-NRH" firstAttribute="top" secondItem="jXz-u8-ZOz" secondAttribute="bottom" constant="8" id="I99-B9-dxO"/>
+                                    <constraint firstAttribute="trailing" secondItem="jXz-u8-ZOz" secondAttribute="trailing" constant="8" id="KGN-EK-T52"/>
+                                    <constraint firstAttribute="trailing" secondItem="bjA-HK-yLt" secondAttribute="trailing" constant="8" id="LU7-k7-PkH"/>
+                                    <constraint firstAttribute="height" constant="220" id="Tkb-Zo-HC1"/>
+                                    <constraint firstItem="bjA-HK-yLt" firstAttribute="top" secondItem="gjn-dK-KAM" secondAttribute="top" constant="8" id="ZoZ-fa-GRL"/>
+                                    <constraint firstAttribute="width" constant="300" id="aNR-2o-4c2"/>
+                                    <constraint firstItem="jXz-u8-ZOz" firstAttribute="top" secondItem="bjA-HK-yLt" secondAttribute="bottom" constant="8" id="bZS-6i-lyV"/>
+                                    <constraint firstItem="jXz-u8-ZOz" firstAttribute="leading" secondItem="gjn-dK-KAM" secondAttribute="leading" constant="8" id="hRS-Fm-GhU"/>
+                                    <constraint firstAttribute="bottom" secondItem="XCk-dy-NRH" secondAttribute="bottom" id="kRI-Gr-nfL"/>
+                                    <constraint firstAttribute="trailing" secondItem="XCk-dy-NRH" secondAttribute="trailing" id="zrs-rG-pAb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0kv-6a-Gph" secondAttribute="trailing" id="8Kg-3q-gk4"/>
+                            <constraint firstItem="0kv-6a-Gph" firstAttribute="top" secondItem="uc0-Pa-Q3v" secondAttribute="top" id="8nE-tO-SlX"/>
+                            <constraint firstItem="gjn-dK-KAM" firstAttribute="centerX" secondItem="uc0-Pa-Q3v" secondAttribute="centerX" id="O9q-C6-kvR"/>
+                            <constraint firstItem="jdD-OG-hav" firstAttribute="top" secondItem="0kv-6a-Gph" secondAttribute="bottom" id="RNo-2r-XHR"/>
+                            <constraint firstItem="gjn-dK-KAM" firstAttribute="centerY" secondItem="uc0-Pa-Q3v" secondAttribute="centerY" id="T1e-FA-D0o"/>
+                            <constraint firstItem="0kv-6a-Gph" firstAttribute="leading" secondItem="uc0-Pa-Q3v" secondAttribute="leading" id="XOf-mQ-sv4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addCommentButton" destination="XCk-dy-NRH" id="jQh-sn-9T2"/>
+                        <outlet property="blur" destination="0kv-6a-Gph" id="DAb-lR-fYn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fEn-Tz-nCn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1811" y="2020"/>
         </scene>
         <!--Add Pokemon View Controller-->
         <scene sceneID="Maz-M0-6m3">
