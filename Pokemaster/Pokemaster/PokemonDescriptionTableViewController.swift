@@ -56,7 +56,7 @@ class PokemonDescriptionTableViewController: BaseView, CommentAddedDelegate{
                                     let user: User = try Unbox(data)
                                     
                                     dispatch_async(dispatch_get_main_queue()) {
-                                        self.pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: user.username))
+                                        self.pokemonItemDescription.insert(PokemonCommentHolder(comment: comment, date: "", username: user.username), atIndex:self.pokemonItemDescription.count-1)
                                         self.tableView.reloadData()
                                     }
                                     
