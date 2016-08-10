@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import Unbox
 
 class PokemonDescriptionTableViewController: BaseView, CommentAddedDelegate{
     
@@ -36,8 +38,53 @@ class PokemonDescriptionTableViewController: BaseView, CommentAddedDelegate{
         
         for comm in pokemon.comments.data!{
             let comment:String = comm.comment
-            let username:String = String(comm.authorId)
-            pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: username))
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                
+                let headers = [
+                    "Authorization": "Token token=\(UserSingleton.sharedInstance.authToken), email=\(UserSingleton.sharedInstance.email)",
+                    "Accept": "application/json"
+                ]
+                
+                Alamofire.request(.GET, "https://pokeapi.infinum.co/api/v1/users/"+String(comm.authorId),headers:headers, encoding: .JSON)
+                    .validate()
+                    .responseJSON { response in
+                        switch response.result {
+                        case .Success:
+                            
+                            if let data = response.data {
+                                do{
+                                    let user: User = try Unbox(data)
+                                    
+                                    dispatch_async(dispatch_get_main_queue()) {
+                                        self.pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: user.username))
+                                        self.tableView.reloadData()
+                                    }
+                                    
+                                } catch _ {
+                                    
+                                    self.createAlertController(
+                                        "Exception while parsing the data",
+                                        message: "An error occured while parsing the data -- please try again later")
+                                }
+                            } else {
+                                self.createAlertController(
+                                    "Error getting the data",
+                                    message: "An error occured while parsing the data -- please try again later")
+                            }
+                            
+                        case .Failure(_):
+                            self.createAlertController(
+                                "Error parsing the data",
+                                message: "An error occured while parsing the data -- please try again later")
+                        }
+                }
+
+                
+                
+                
+            })
+            
+            
         }
         pokemonItemDescription.append(PokemonAddCommendHolder())
         

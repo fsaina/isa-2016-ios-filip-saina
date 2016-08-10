@@ -50,7 +50,7 @@ class RegisterViewController: BaseView {
             let user: User = try Unbox(data)
             
             //set the singleton class variables
-            UserSingleton.sharedInstance.authToken = user.authToken
+            UserSingleton.sharedInstance.authToken = user.authToken!
             UserSingleton.sharedInstance.email = user.email
             UserSingleton.sharedInstance.username = user.username
             
