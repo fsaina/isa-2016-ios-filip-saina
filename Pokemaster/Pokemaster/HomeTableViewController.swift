@@ -222,7 +222,7 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
     }
     
     func addANewItem(item:Pokemon){
-        self.pokeList.append(item)
+        self.pokeList.insert(item, atIndex: 0)
         tableView.reloadData()
     }
 

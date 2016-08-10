@@ -69,13 +69,13 @@ extension Pokemon: Unboxable{
 
 struct Comments{
     let data:[CommentEntry]?
-    let included:[Included]?
+//    let included:[Included]?
 }
 
 extension Comments:Unboxable{
     init(unboxer: Unboxer) {
         self.data = unboxer.unbox("data")
-        self.included = unboxer.unbox("included")
+//        self.included = unboxer.unbox("included")
     }
 }
 
@@ -102,8 +102,8 @@ struct CommentEntry{
 extension CommentEntry: Unboxable{
     init(unboxer: Unboxer) {
         self.id = unboxer.unbox("id")
-        self.comment = unboxer.unbox("attributes.content")
-        self.authorId = unboxer.unbox("relationships.author.data.id")
+        self.comment = unboxer.unbox("content")
+        self.authorId = unboxer.unbox("author-id")
     }
 }
 

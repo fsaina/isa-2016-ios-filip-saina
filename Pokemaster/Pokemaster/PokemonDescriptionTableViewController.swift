@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokemonDescriptionTableViewController: BaseView{
+class PokemonDescriptionTableViewController: BaseView, CommentAddedDelegate{
     
     @IBOutlet var tableView: UITableView!
     
@@ -23,6 +23,7 @@ class PokemonDescriptionTableViewController: BaseView{
         tableView.sectionHeaderHeight = 0
         
         let pokemon:Pokemon = UserSingleton.sharedInstance.pokemonList[0]
+        print(pokemon.id)
         
         if(pokemon.imageUrl != nil){
             pokemonItemDescription.append(PokemonImageViewHolder(url: pokemon.imageUrl!))
@@ -34,15 +35,13 @@ class PokemonDescriptionTableViewController: BaseView{
         pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Type", description: pokemon.type!))
         pokemonItemDescription.append(PokemonLikeDislikeHolder())
         
-        for(var i = 0; i < pokemon.comments.data?.count; i += 1){
-            let comment:String = (pokemon.comments.data?[i].comment)!
-            let username:String = pokemon.comments.included![i].username
-            pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: username))
-        }
-        
         pokemonItemDescription.append(PokemonAddCommendHolder())
         
-        
+        for(var i = 0; i < pokemon.comments.data?.count; i += 1){
+            let comment:String = (pokemon.comments.data?[i].comment)!
+            let username:String = String(pokemon.comments.data![i].authorId)
+            pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: username))
+        }
         navigationItem.title = pokemon.name
     }
     
@@ -150,18 +149,16 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         let cellMember:PokemonDescriptionDataHolderProtocol = pokemonItemDescription[indexPath.section]
-        if cellMember is PokemonLikeDislikeHolder{
-            return 100
-        }
-        
-        return tableView.rowHeight
+        return CGFloat(cellMember.cellHeight)
     }
     
     func addCommentClick(button:UIButton){
     
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("popup")
-        vc?.modalPresentationStyle = .OverCurrentContext
-        navigationController?.presentViewController(vc!, animated: true, completion: {
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("popup") as! AddCommentViewController
+        vc.modalPresentationStyle = .OverCurrentContext
+        
+        vc.delegate = self
+        navigationController?.presentViewController(vc, animated: true, completion: {
             
         })
         
@@ -190,6 +187,11 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
         performRequest(.POST, apiUlr: urlUpvote, params:nil, headers: headers)
     }
     
+    func commentAdded(comment: String) {
+        self.pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: UserSingleton.sharedInstance.username))
+        
+        tableView.reloadData()
+    }
     
 }
 
@@ -199,4 +201,8 @@ extension PokemonDescriptionTableViewController: UITableViewDelegate{
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+}
+
+protocol CommentAddedDelegate {
+    func commentAdded(name: String)
 }

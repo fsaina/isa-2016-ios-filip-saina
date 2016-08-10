@@ -8,6 +8,7 @@
 
 protocol PokemonDescriptionDataHolderProtocol {
     var tableIdentifier:String { get }
+    var cellHeight:Int { get }
 }
 
 
@@ -26,6 +27,10 @@ struct PokemonDescriptionHolder: PokemonDescriptionDataHolderProtocol  {
         return "descriptionCell"
     }
     
+    var cellHeight: Int{
+        return 100
+    }
+    
 }
 
 struct PokemonTitleDescriptionHolder: PokemonDescriptionDataHolderProtocol {
@@ -41,6 +46,10 @@ struct PokemonTitleDescriptionHolder: PokemonDescriptionDataHolderProtocol {
     var tableIdentifier: String {
         return "dataCell"
     }
+    
+    var cellHeight: Int{
+        return 40
+    }
 }
 
 struct PokemonAddCommendHolder: PokemonDescriptionDataHolderProtocol{
@@ -49,11 +58,19 @@ struct PokemonAddCommendHolder: PokemonDescriptionDataHolderProtocol{
         return "addCommentCell"
     }
     
+    var cellHeight: Int{
+        return 40
+    }
+    
 }
 
 struct PokemonLikeDislikeHolder: PokemonDescriptionDataHolderProtocol {
     var tableIdentifier: String {
         return "likeCell"
+    }
+    
+    var cellHeight: Int{
+        return 120
     }
 }
 
@@ -73,6 +90,10 @@ struct PokemonCommentHolder: PokemonDescriptionDataHolderProtocol {
         return "commentCell"
     }
     
+    var cellHeight: Int{
+        return 100
+    }
+    
 }
 
 struct PokemonImageViewHolder: PokemonDescriptionDataHolderProtocol{
@@ -84,6 +105,10 @@ struct PokemonImageViewHolder: PokemonDescriptionDataHolderProtocol{
     
     var tableIdentifier: String {
         return "imageCell"
+    }
+    
+    var cellHeight: Int{
+        return 170
     }
 }
 
