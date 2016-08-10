@@ -34,13 +34,12 @@ class PokemonDescriptionTableViewController: BaseView, CommentAddedDelegate{
         pokemonItemDescription.append(PokemonTitleDescriptionHolder(title: "Type", description: pokemon.type!))
         pokemonItemDescription.append(PokemonLikeDislikeHolder())
         
-        pokemonItemDescription.append(PokemonAddCommendHolder())
-        
         for comm in pokemon.comments.data!{
             let comment:String = comm.comment
             let username:String = String(comm.authorId)
             pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: username))
         }
+        pokemonItemDescription.append(PokemonAddCommendHolder())
         
         navigationItem.title = pokemon.name
     }
@@ -191,7 +190,7 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
     }
     
     func commentAdded(comment: String) {
-        self.pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: UserSingleton.sharedInstance.username))
+        self.pokemonItemDescription.insert(PokemonCommentHolder(comment: comment, date: "", username: UserSingleton.sharedInstance.username), atIndex:self.pokemonItemDescription.count-1)
         tableView.reloadData()
     }
     
