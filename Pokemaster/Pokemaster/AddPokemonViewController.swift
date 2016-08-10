@@ -76,24 +76,12 @@ class AddPokemonViewController: BaseView, UINavigationControllerDelegate, UIImag
     }
     
     override func onResponseSuccess(data: NSData) {
-        
         hideSpinner()
-        
-        do {
-            
-            //do nothing
-            
-        } catch _ {
-            
-            self.onParseError()
-            
-        }
-        
     }
     
     @IBAction func saveButtonPress(sender: AnyObject) {
         
-        guard let name = nameField?.text where nameField.text!.characters.count > 0,
+        guard let _ = nameField?.text where nameField.text!.characters.count > 0,
             let username = heightField?.text where username.characters.count > 0,
             let password = weightField?.text where password.characters.count > 0,
             let passwordConfirm = DescriptionField?.text where passwordConfirm.characters.count > 0 else{
@@ -177,7 +165,7 @@ class AddPokemonViewController: BaseView, UINavigationControllerDelegate, UIImag
                     }
                     })
                     self.navigationController!.popViewControllerAnimated(true)
-                case .Failure(let encodingError):
+                case .Failure( _):
                     self.createAlertController(
                         "Error",
                         message: "Sorry, there was an error creating a new pokemon")

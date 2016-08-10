@@ -39,12 +39,12 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
         
         //set valid login user
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setBool(true, forKey: "isEntered")
+        defaults.setBool(true, forKey: "isEnvared")
         defaults.setObject(UserSingleton.sharedInstance.username, forKey: "username")
         defaults.setObject(UserSingleton.sharedInstance.email, forKey: "email")
         defaults.setObject(UserSingleton.sharedInstance.authToken, forKey: "authToken")
         
-        
+        //set the refresh control
         refreshControl = UIRefreshControl()
         refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl!.addTarget(self, action: #selector(HomeTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -193,6 +193,16 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
         cell.pokemonNameLabel.text = self.pokeList[indexPath.section].name
         
         
+        if(self.pokeList[indexPath.section].image != nil){
+            
+            cell.pokemonImageView.image = self.pokeList[indexPath.section].image
+            cell.pokemonImageView.layer.cornerRadius = cell.pokemonImageView.frame.size.width/2
+            cell.pokemonImageView.layer.borderWidth = 1
+            cell.pokemonImageView.layer.borderColor = UIColor.grayColor().CGColor
+            cell.pokemonImageView.layer.masksToBounds = true
+            cell.setNeedsLayout()
+            
+        } else {
         // Grab the image in its thread and load it here
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
@@ -208,6 +218,7 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                 
                     dispatch_async(dispatch_get_main_queue()) {
                         cell.pokemonImageView.image = myImage
+                        self.pokeList[indexPath.section].image = myImage
                         cell.pokemonImageView.layer.cornerRadius = cell.pokemonImageView.frame.size.width/2
                         cell.pokemonImageView.layer.borderWidth = 1
                         cell.pokemonImageView.layer.borderColor = UIColor.grayColor().CGColor
@@ -219,6 +230,7 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
             
             
         })
+        }
         
         return cell
     }
@@ -237,7 +249,6 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
     }
 
 }
-
 
 protocol newListItemDelegate {
     func addANewItem(item:Pokemon)
