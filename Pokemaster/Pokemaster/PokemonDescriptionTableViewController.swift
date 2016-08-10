@@ -23,7 +23,6 @@ class PokemonDescriptionTableViewController: BaseView, CommentAddedDelegate{
         tableView.sectionHeaderHeight = 0
         
         let pokemon:Pokemon = UserSingleton.sharedInstance.pokemonList[0]
-        print(pokemon.id)
         
         if(pokemon.imageUrl != nil){
             pokemonItemDescription.append(PokemonImageViewHolder(url: pokemon.imageUrl!))
@@ -134,7 +133,10 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         cell.imageView?.image = myImage
+                        
                         cell.setNeedsLayout()
+                        
+                        cell.imageView?.contentMode = .ScaleAspectFit
                     }
                 }
                 

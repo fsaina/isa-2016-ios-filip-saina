@@ -44,6 +44,15 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
         defaults.setObject(UserSingleton.sharedInstance.email, forKey: "email")
         defaults.setObject(UserSingleton.sharedInstance.authToken, forKey: "authToken")
         
+        
+        refreshControl = UIRefreshControl()
+        refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl!.addTarget(self, action: #selector(HomeTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+    }
+    
+    func refresh(sender:AnyObject) {
+        loadListDataFromServer()
     }
     
     // method to execute on add new pokemon button click
@@ -128,6 +137,10 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                             self.pokeList = listResponse.data
                             self.tableView.reloadData()
                             self.hideSpinner()
+                            
+                            if self.refreshControl!.refreshing{
+                                self.refreshControl!.endRefreshing()
+                            }
                         
                         } catch _ {
 
@@ -186,9 +199,6 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
             
             if((self.pokeList[indexPath.section].imageUrl) != nil){
                 let urlImage:String = "https://pokeapi.infinum.co" + self.pokeList[indexPath.section].imageUrl!
-                
-                print(urlImage) //debug
-                
                 let url = NSURL(string:urlImage)!
             
                 if((NSData(contentsOfURL: url)) != nil){
