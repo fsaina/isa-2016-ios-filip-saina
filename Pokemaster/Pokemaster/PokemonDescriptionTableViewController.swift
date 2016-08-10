@@ -40,6 +40,8 @@ class PokemonDescriptionTableViewController: BaseView{
             pokemonItemDescription.append(PokemonCommentHolder(comment: comment, date: "", username: username))
         }
         
+        pokemonItemDescription.append(PokemonAddCommendHolder())
+        
         
         navigationItem.title = pokemon.name
     }
@@ -107,6 +109,13 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
             
             return cell
             
+        case is PokemonAddCommendHolder:
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! AddCommentTableViewCell
+            
+            cell.addCommentButton.addTarget(self, action: #selector(PokemonDescriptionTableViewController.addCommentClick), forControlEvents: .TouchUpInside)
+            
+            return cell
+            
         case is PokemonImageViewHolder:
             let cell = tableView.dequeueReusableCellWithIdentifier(cellMember.tableIdentifier) as! ImageTableViewCell
             let cellElement = cellMember as! PokemonImageViewHolder
@@ -148,8 +157,11 @@ extension PokemonDescriptionTableViewController: UITableViewDataSource{
         return tableView.rowHeight
     }
     
+    func addCommentClick(button:UIButton){
     
-    
+        print("click")
+        
+    }
     
     func likeButtonClick(button:UIButton){
         showSpinner()

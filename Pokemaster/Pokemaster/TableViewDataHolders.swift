@@ -43,6 +43,14 @@ struct PokemonTitleDescriptionHolder: PokemonDescriptionDataHolderProtocol {
     }
 }
 
+struct PokemonAddCommendHolder: PokemonDescriptionDataHolderProtocol{
+    
+    var tableIdentifier: String {
+        return "addCommentCell"
+    }
+    
+}
+
 struct PokemonLikeDislikeHolder: PokemonDescriptionDataHolderProtocol {
     var tableIdentifier: String {
         return "likeCell"

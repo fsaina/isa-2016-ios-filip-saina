@@ -30,7 +30,6 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
         
         let buttonAdd: UIButton = UIButton(type: UIButtonType.ContactAdd)
         buttonAdd.frame = CGRectMake(0, 0, 40, 40)
-//        buttonAdd.setImage(UIImage(named:"ImageName.png"), forState:UIControlState.Normal)
         buttonAdd.addTarget(self, action: #selector(HomeTableViewController.addNewPokemonBarItem), forControlEvents:UIControlEvents.TouchUpInside)
     
         let addNewPokemonButton: UIBarButtonItem = UIBarButtonItem(customView: buttonAdd)
@@ -88,7 +87,7 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                         } catch _ {
                             
                             self.createAlertController(
-                                "Error parsing the error data",
+                                "Error parsing the data",
                                 message: "An error occured while parsing the error data -- please try again later")
                         }
                     } else {
@@ -142,7 +141,7 @@ class HomeTableViewController: UITableViewController, newListItemDelegate {
                             message: "An error occured while parsing the data -- please try again later")
                     }
                     
-                case .Failure(let error):
+                case .Failure(_):
                     self.createAlertController(
                         "Error parsing the data",
                         message: "An error occured while parsing the data -- please try again later")
